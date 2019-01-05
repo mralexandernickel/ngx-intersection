@@ -9,7 +9,7 @@ cache:
     - './node_modules'
 before_script:
   - yarn build angular-intersection
-  - yarn build --prod
+  - yarn build --prod --base-href=/angular-intersection/
 script:
   - yarn lint
   # - yarn test
