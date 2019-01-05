@@ -1,0 +1,11 @@
+{
+  "name": "@mralexandernickel/angular-intersection",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@angular/common": "^7.1.0",
+    "@angular/core": "^7.1.0"
+  }
+}

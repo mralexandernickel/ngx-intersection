@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-intersection": {
+    "angular-intersection-demo": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-intersection",
+            "outputPath": "dist/angular-intersection-demo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-intersection:build"
+            "browserTarget": "angular-intersection-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-intersection:build:production"
+              "browserTarget": "angular-intersection-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-intersection:build"
+            "browserTarget": "angular-intersection-demo:build"
           }
         },
         "test": {
@@ -106,7 +106,7 @@
         }
       }
     },
-    "angular-intersection-e2e": {
+    "angular-intersection-demo-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -115,11 +115,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-intersection:serve"
+            "devServerTarget": "angular-intersection-demo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-intersection:serve:production"
+              "devServerTarget": "angular-intersection-demo:serve:production"
             }
           }
         },
@@ -133,7 +133,42 @@
           }
         }
       }
+    },
+    "angular-intersection": {
+      "root": "projects/angular-intersection",
+      "sourceRoot": "projects/angular-intersection/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angular-intersection/tsconfig.lib.json",
+            "project": "projects/angular-intersection/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-intersection/src/test.ts",
+            "tsConfig": "projects/angular-intersection/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-intersection/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-intersection/tsconfig.lib.json",
+              "projects/angular-intersection/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "angular-intersection"
+  "defaultProject": "angular-intersection-demo"
 }
