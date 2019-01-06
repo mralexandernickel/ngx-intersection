@@ -6,6 +6,7 @@
   },
   "peerDependencies": {
     "@angular/common": "^7.1.0",
-    "@angular/core": "^7.1.0"
+    "@angular/core": "^7.1.0",
+    "intersection-observer": "^0.5.1"
   }
 }

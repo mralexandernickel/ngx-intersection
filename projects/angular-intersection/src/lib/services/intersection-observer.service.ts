@@ -3,9 +3,9 @@ import 'intersection-observer';
 export class IntersectionObserverService {
   private observer: IntersectionObserver;
 
-  private callbacks: Map<Element, Function> = new Map();
+  public callbacks: Map<Element, Function> = new Map();
 
-  private matchOnce: Map<Element, true> = new Map();
+  public matchOnce: Map<Element, true> = new Map();
 
   constructor(
     public rootMargin: string = '0px 0px 0px 0px',
@@ -24,7 +24,7 @@ export class IntersectionObserverService {
 
   public intersectionObserverCallback(
     entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver
+    observer?: IntersectionObserver
   ): any {
     for (const entry of entries) {
       if (entry.isIntersecting) {
