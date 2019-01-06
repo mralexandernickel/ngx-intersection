@@ -5,11 +5,13 @@ export class IntersectionObserverService {
 
   private callbacks: Map<Element, Function> = new Map();
 
+  private matchOnce: Map<Element, true> = new Map();
+
   constructor(
     public rootMargin: string = '0px 0px 0px 0px',
     public threshold: number | number[] = 0.0
   ) {
-    const options = {
+    const options: IntersectionObserverInit = {
       rootMargin: rootMargin,
       threshold: threshold
     };
@@ -26,7 +28,12 @@ export class IntersectionObserverService {
   ): any {
     for (const entry of entries) {
       if (entry.isIntersecting) {
-        this.callbacks.get(entry.target)();
+        const element = entry.target;
+        this.callbacks.get(element)();
+        if (this.matchOnce.get(element)) {
+          this.unobserveElement(element);
+          this.matchOnce.delete(element);
+        }
       }
     }
   }
@@ -36,8 +43,15 @@ export class IntersectionObserverService {
     this.callbacks.delete(element);
   }
 
-  public observeElement(element: Element, callback: Function): void {
+  public observeElement(
+    element: Element,
+    callback: Function,
+    once?: true
+  ): void {
     this.callbacks.set(element, callback);
+    if (once) {
+      this.matchOnce.set(element, once);
+    }
     this.observer.observe(element);
   }
 }
