@@ -20,7 +20,7 @@ export class EnterViewportDirective implements OnInit, OnDestroy {
   > = new EventEmitter();
 
   constructor(
-    private elRef: ElementRef,
+    public elRef: ElementRef,
     public intersectionEnterService: IntersectionEnterService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
@@ -29,17 +29,23 @@ export class EnterViewportDirective implements OnInit, OnDestroy {
     this.enterViewport.emit(true);
   }
 
+  public isBrowser(): boolean {
+    return isPlatformBrowser(this.platformId);
+  }
+
   public ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.isBrowser()) {
       this.intersectionEnterService.observeElement(
         this.elRef.nativeElement,
         this.emitEnter.bind(this)
       );
+    } else {
+      this.emitEnter();
     }
   }
 
   public ngOnDestroy(): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.isBrowser()) {
       this.intersectionEnterService.unobserveElement(this.elRef.nativeElement);
     }
   }

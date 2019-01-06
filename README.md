@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/mralexandernickel/angular-intersection.svg?branch=master)](https://travis-ci.org/mralexandernickel/angular-intersection)
+[![Coverage Status](https://coveralls.io/repos/github/mralexandernickel/angular-intersection/badge.svg?branch=master)](https://coveralls.io/github/mralexandernickel/angular-intersection?branch=master)
+[![npm version](https://badge.fury.io/js/%40mralexandernickel%2Fangular-intersection.svg)](https://www.npmjs.com/@mralexandernickel/angular-intersection)
 
 # Angular Intersection
 
