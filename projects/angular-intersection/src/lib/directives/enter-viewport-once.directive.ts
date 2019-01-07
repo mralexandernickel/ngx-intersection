@@ -1,17 +1,10 @@
-import {
-  Directive,
-  Output,
-  EventEmitter,
-  OnInit,
-  OnDestroy
-} from '@angular/core';
+import { Directive, Output, EventEmitter } from '@angular/core';
 import { EnterViewportDirective } from './enter-viewport.directive';
 
 @Directive({
   selector: '[libEnterViewportOnce]'
 })
-export class EnterViewportOnceDirective extends EnterViewportDirective
-  implements OnInit, OnDestroy {
+export class EnterViewportOnceDirective extends EnterViewportDirective {
   @Output('libEnterViewportOnce') enterViewportOnce: EventEmitter<
     any
   > = new EventEmitter();
@@ -20,7 +13,7 @@ export class EnterViewportOnceDirective extends EnterViewportDirective
     this.enterViewportOnce.emit(true);
   }
 
-  public ngOnInit(): void {
+  public observeStart(): void {
     if (this.isBrowser()) {
       this.intersectionEnterService.observeElement(
         this.elRef.nativeElement,

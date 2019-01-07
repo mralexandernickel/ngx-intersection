@@ -12,7 +12,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { IntersectionEnterService } from '../services/intersection-enter.service';
 
 @Directive({
-  selector: '[libEnterViewport]'
+  selector: '[libEnterViewport]',
+  exportAs: 'libEnterViewport'
 })
 export class EnterViewportDirective implements OnInit, OnDestroy {
   @Output('libEnterViewport') enterViewport: EventEmitter<
@@ -33,7 +34,7 @@ export class EnterViewportDirective implements OnInit, OnDestroy {
     return isPlatformBrowser(this.platformId);
   }
 
-  public ngOnInit(): void {
+  public observeStart(): void {
     if (this.isBrowser()) {
       this.intersectionEnterService.observeElement(
         this.elRef.nativeElement,
@@ -44,9 +45,22 @@ export class EnterViewportDirective implements OnInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy(): void {
+  public observeEnd(): void {
     if (this.isBrowser()) {
       this.intersectionEnterService.unobserveElement(this.elRef.nativeElement);
     }
+  }
+
+  public observeRestart(): void {
+    this.observeEnd();
+    this.observeStart();
+  }
+
+  public ngOnInit(): void {
+    this.observeStart();
+  }
+
+  public ngOnDestroy(): void {
+    this.observeEnd();
   }
 }

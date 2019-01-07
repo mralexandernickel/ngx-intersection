@@ -75,4 +75,18 @@ describe('EnterViewportDirective', () => {
     enterViewportDirective.ngOnDestroy();
     expect(spyUnobserveElement).not.toHaveBeenCalled();
   });
+
+  it('should call observeEnd and observeStart', () => {
+    const spyObserveStart: jasmine.Spy = spyOn(
+      enterViewportDirective,
+      'observeStart'
+    );
+    const spyObserveEnd: jasmine.Spy = spyOn(
+      enterViewportDirective,
+      'observeEnd'
+    );
+    enterViewportDirective.observeRestart();
+    expect(spyObserveStart).toHaveBeenCalled();
+    expect(spyObserveEnd).toHaveBeenCalled();
+  });
 });
