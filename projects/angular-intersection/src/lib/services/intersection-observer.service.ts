@@ -1,5 +1,3 @@
-import 'intersection-observer';
-
 export class IntersectionObserverService {
   private observer: IntersectionObserver;
 
