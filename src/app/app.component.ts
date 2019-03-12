@@ -17,7 +17,9 @@ export class AppComponent {
   public createDummies(num: number): void {
     let i = 0;
     while (i < num) {
-      this.dummies.push(i + 1);
+      this.dummies.push({
+        value: i + 1
+      });
       i++;
     }
   }

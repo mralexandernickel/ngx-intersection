@@ -39,7 +39,7 @@ describe('EnterViewportDirective', () => {
 
   it('should call emit', () => {
     const spyEmit: jasmine.Spy = spyOn(
-      enterViewportDirective.enterViewport,
+      enterViewportDirective.intersectionEmitter,
       'emit'
     );
     enterViewportDirective.emitEnter();

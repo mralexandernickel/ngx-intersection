@@ -1,6 +1,8 @@
 <ul class="dummies">
   <li
     *ngFor="let dummy of dummies"
-    (libEnterViewport)="enterHandler()"
-  >Dummy #{{ dummy }}</li>
+    (libEnterViewport)="dummy.showElement=true"
+  >
+    <ng-container *ngIf="dummy.showElement">Dummy #{{ dummy.value }}</ng-container>
+  </li>
 </ul>
