@@ -6,8 +6,9 @@ import {
   Inject,
   PLATFORM_ID
 } from '@angular/core';
-import { IntersectionWillEnterService } from '../services/intersection-will-enter.service';
 import { AbstractViewportDirective } from './abstract.viewport.directive';
+import { IntersectionFutureService } from '../services/intersection-future.service';
+import { Callbacks } from '../services/intersection-observer.service';
 
 @Directive({
   selector: '[libWillEnterViewport]',
@@ -18,11 +19,15 @@ export class WillEnterViewportDirective extends AbstractViewportDirective {
     any
   > = new EventEmitter();
 
+  public callbacks: Callbacks = {
+    enter: this.emitIntersection.bind(this)
+  };
+
   constructor(
     public elRef: ElementRef,
-    public intersectionWillEnterService: IntersectionWillEnterService,
+    public intersectionFutureService: IntersectionFutureService,
     @Inject(PLATFORM_ID) public platformId: Object
   ) {
-    super(elRef, intersectionWillEnterService, platformId);
+    super(elRef, intersectionFutureService, platformId);
   }
 }

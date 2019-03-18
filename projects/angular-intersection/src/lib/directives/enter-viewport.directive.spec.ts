@@ -42,7 +42,7 @@ describe('EnterViewportDirective', () => {
       enterViewportDirective.intersectionEmitter,
       'emit'
     );
-    enterViewportDirective.emitEnter();
+    enterViewportDirective.emitIntersection(true);
     expect(spyEmit).toHaveBeenCalled();
   });
 
@@ -53,7 +53,7 @@ describe('EnterViewportDirective', () => {
     ).and.returnValue(false);
 
     const spyObserveElement: jasmine.Spy = spyOn(
-      enterViewportDirective.intersectionEnterService,
+      enterViewportDirective.intersectionPresentService,
       'observeElement'
     );
 
@@ -68,7 +68,7 @@ describe('EnterViewportDirective', () => {
     ).and.returnValue(false);
 
     const spyUnobserveElement: jasmine.Spy = spyOn(
-      enterViewportDirective.intersectionEnterService,
+      enterViewportDirective.intersectionPresentService,
       'unobserveElement'
     );
 

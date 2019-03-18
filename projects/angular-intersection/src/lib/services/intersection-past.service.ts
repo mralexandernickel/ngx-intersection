@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class IntersectionWillEnterService extends IntersectionObserverService {
+export class IntersectionPastService extends IntersectionObserverService {
   constructor() {
-    super('200px', 0.0);
+    super('-200px', 0.0);
   }
 }

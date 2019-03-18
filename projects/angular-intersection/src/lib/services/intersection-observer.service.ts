@@ -1,55 +1,114 @@
-export class IntersectionObserverService {
+import { IntersectionService } from './abstract.intersection.service';
+
+export interface Callbacks {
+  enter?: Function;
+  exit?: Function;
+  once?: boolean;
+  isIntersecting?: boolean;
+}
+
+export class IntersectionObserverService implements IntersectionService {
+  /**
+   * The IntersectionObserver instance
+   */
   private observer: IntersectionObserver;
 
-  public callbacks: Map<Element, Function> = new Map();
+  /**
+   * A map holding the registered callbacks for enter- and exit-events
+   */
+  public callbacks: Map<Element, Callbacks> = new Map();
 
-  public matchOnce: Map<Element, true> = new Map();
-
+  /**
+   * @param rootMargin Margin around the root element
+   * @param threshold On which intersectionRatio should we listen
+   */
   constructor(
     public rootMargin: string = '0px 0px 0px 0px',
     public threshold: number | number[] = 0.0
   ) {
-    const options: IntersectionObserverInit = {
-      rootMargin: rootMargin,
-      threshold: threshold
-    };
-
     this.observer = new IntersectionObserver(
       this.intersectionObserverCallback.bind(this),
-      options
+      { rootMargin, threshold }
     );
   }
 
-  public intersectionObserverCallback(
-    entries: IntersectionObserverEntry[],
-    observer?: IntersectionObserver
-  ): any {
-    for (const entry of entries) {
-      if (entry.isIntersecting) {
-        const element = entry.target;
-        this.callbacks.get(element)();
-        if (this.matchOnce.get(element)) {
-          this.unobserveElement(element);
-          this.matchOnce.delete(element);
-        }
+  /**
+   * Run the callbacks registered for current element if it is entering
+   * the viewport
+   *
+   * @param entry The IntersectionObserverEntry
+   * @param callbacks The callbacks registered for this IntersectionObserverEntry's targt
+   */
+  private runEnterCallbacks(
+    entry: IntersectionObserverEntry,
+    callbacks: Callbacks
+  ): void {
+    if (entry.isIntersecting && callbacks.enter) {
+      callbacks.enter(entry);
+      // TODO how to not duplicate this? rxjs pipes?
+      if (callbacks.once === true) {
+        this.unobserveElement(entry.target);
       }
     }
   }
 
+  /**
+   * Run the callbacks registered for current element if it is exiting
+   * the viewport
+   *
+   * @param entry The IntersectionObserverEntry
+   * @param callbacks The callbacks registered for this IntersectionObserverEntry's targt
+   */
+  private runExitCallbacks(
+    entry: IntersectionObserverEntry,
+    callbacks: Callbacks
+  ): void {
+    if (
+      callbacks.exit &&
+      // make sure we don't emit during initial pagerendering
+      callbacks.isIntersecting === true &&
+      // check if element isn't intersecting anymore
+      entry.isIntersecting === false
+    ) {
+      callbacks.exit(entry);
+      // TODO how to not duplicate this? rxjs pipes?
+      if (callbacks.once === true) {
+        this.unobserveElement(entry.target);
+      }
+    }
+    // TODO Explain why! ...and why _here_!
+    callbacks.isIntersecting = entry.isIntersecting;
+  }
+
+  /** */
+  public intersectionObserverCallback(
+    entries: IntersectionObserverEntry[],
+    observer?: IntersectionObserver
+  ): void {
+    for (const entry of entries) {
+      // Get callbacks bound to this element
+      const callbacks = this.callbacks.get(entry.target);
+      // Run callbacks when exiting
+      this.runExitCallbacks(entry, callbacks);
+      // Run callbacks when entering
+      this.runEnterCallbacks(entry, callbacks);
+    }
+  }
+
+  /**
+   * @param element The element to unobserve
+   */
   public unobserveElement(element: Element): void {
     this.observer.unobserve(element);
     this.callbacks.delete(element);
   }
 
-  public observeElement(
-    element: Element,
-    callback: Function,
-    once?: true
-  ): void {
-    this.callbacks.set(element, callback);
-    if (once) {
-      this.matchOnce.set(element, once);
-    }
+  /**
+   * @param element The element to observe
+   * @param callback The callback to be executed when element isIntersecting
+   */
+  public observeElement(element: Element, callbacks: Callbacks): void {
+    this.callbacks.set(element, callbacks);
     this.observer.observe(element);
   }
 }

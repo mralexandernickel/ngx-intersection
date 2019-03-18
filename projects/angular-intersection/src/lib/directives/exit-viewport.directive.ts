@@ -7,20 +7,20 @@ import {
   PLATFORM_ID
 } from '@angular/core';
 import { AbstractViewportDirective } from './abstract.viewport.directive';
-import { IntersectionPresentService } from '../services/intersection-present.service';
 import { Callbacks } from '../services/intersection-observer.service';
+import { IntersectionPresentService } from '../services/intersection-present.service';
 
 @Directive({
-  selector: '[libEnterViewport]',
-  exportAs: 'libEnterViewport'
+  selector: '[libExitViewport]',
+  exportAs: 'libExitViewport'
 })
-export class EnterViewportDirective extends AbstractViewportDirective {
-  @Output('libEnterViewport') intersectionEmitter: EventEmitter<
+export class ExitViewportDirective extends AbstractViewportDirective {
+  @Output('libExitViewport') intersectionEmitter: EventEmitter<
     any
   > = new EventEmitter();
 
   public callbacks: Callbacks = {
-    enter: this.emitIntersection.bind(this)
+    exit: this.emitIntersection.bind(this)
   };
 
   constructor(
