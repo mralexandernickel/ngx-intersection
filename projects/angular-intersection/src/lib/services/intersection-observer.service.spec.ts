@@ -56,7 +56,7 @@ describe('IntersectionObserverService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should call callback for element if isIntersecting', () => {
+  it('should call enter-callback for element if isIntersecting', () => {
     const mockElement = document.createElement('div');
     const foo = {
       enter: (): void => {
@@ -68,6 +68,26 @@ describe('IntersectionObserverService', () => {
     service.callbacks.set(mockElement, foo);
     service.intersectionObserverCallback(entries);
     expect(spyMockCallback).toHaveBeenCalled();
+  });
+
+  it('should call exit-callback for element if !isIntersecting', () => {
+    const mockElement = document.createElement('div');
+    const foo = {
+      enter: (): void => {
+        return;
+      },
+      exit: (): void => {
+        return;
+      },
+      isIntersecting: true
+    };
+    const entries = mockIntersectionObserverEntries(1, false, mockElement);
+    const spyEnterCallback: jasmine.Spy = spyOn(foo, 'enter');
+    const spyExitCallback: jasmine.Spy = spyOn(foo, 'exit');
+    service.callbacks.set(mockElement, foo);
+    service.intersectionObserverCallback(entries);
+    expect(spyExitCallback).toHaveBeenCalled();
+    expect(spyEnterCallback).not.toHaveBeenCalled();
   });
 
   it('should unobserve element and cleanly teardown if "once" is true', () => {
@@ -82,11 +102,24 @@ describe('IntersectionObserverService', () => {
     expect(spyUnobserveElement).toHaveBeenCalled();
   });
 
-  it('should do nothing if entry is not intersecting', () => {
+  it('should unobserve element and cleanly teardown if "once" is true', () => {
     const mockElement = document.createElement('div');
     const entries = mockIntersectionObserverEntries(1, false, mockElement);
-    const spyMatchOnceGet: jasmine.Spy = spyOn(service.callbacks, 'get');
+    service.callbacks.set(mockElement, {
+      exit: () => {},
+      once: true,
+      isIntersecting: true
+    });
+    const spyUnobserveElement: jasmine.Spy = spyOn(service, 'unobserveElement');
     service.intersectionObserverCallback(entries);
-    expect(spyMatchOnceGet).not.toHaveBeenCalled();
+    expect(spyUnobserveElement).toHaveBeenCalled();
   });
+
+  // it('should do nothing if entry is not intersecting', () => {
+  //   const mockElement = document.createElement('div');
+  //   const entries = mockIntersectionObserverEntries(1, false, mockElement);
+  //   const spyMatchOnceGet: jasmine.Spy = spyOn(service.callbacks, 'get');
+  //   service.intersectionObserverCallback(entries);
+  //   expect(spyMatchOnceGet).not.toHaveBeenCalled();
+  // });
 });

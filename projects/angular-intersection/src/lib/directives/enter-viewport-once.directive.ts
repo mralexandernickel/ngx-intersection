@@ -2,6 +2,7 @@ import { Directive, Output, EventEmitter } from '@angular/core';
 import { EnterViewportDirective } from './enter-viewport.directive';
 import { Callbacks } from '../services/intersection-observer.service';
 
+/* istanbul ignore next */
 @Directive({
   selector: '[libEnterViewportOnce]',
   exportAs: 'libEnterViewportOnce'
