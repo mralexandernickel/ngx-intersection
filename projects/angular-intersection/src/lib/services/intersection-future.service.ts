@@ -1,11 +1,13 @@
 import { IntersectionObserverService } from './intersection-observer.service';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, InjectionToken } from '@angular/core';
+
+export const ROOT_MARGIN_FUTURE = new InjectionToken<string>('200px');
 
 @Injectable({
   providedIn: 'root'
 })
 export class IntersectionFutureService extends IntersectionObserverService {
-  constructor() {
-    super('200px', 0.0);
+  constructor(@Inject(ROOT_MARGIN_FUTURE) public rootMargin: string) {
+    super(rootMargin, 0.0);
   }
 }

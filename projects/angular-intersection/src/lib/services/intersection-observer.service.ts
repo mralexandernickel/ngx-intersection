@@ -23,7 +23,7 @@ export class IntersectionObserverService implements IntersectionService {
    * @param threshold On which intersectionRatio should we listen
    */
   constructor(
-    public rootMargin: string = '0px 0px 0px 0px',
+    public rootMargin: string = '0px',
     public threshold: number | number[] = 0.0
   ) {
     this.observer = new IntersectionObserver(
