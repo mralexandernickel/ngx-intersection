@@ -2,7 +2,6 @@ import { EnterViewportDirective } from './enter-viewport.directive';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { ROOT_MARGIN_PRESENT } from '../services/intersection-present.service';
 
 @Component({
   template: `
