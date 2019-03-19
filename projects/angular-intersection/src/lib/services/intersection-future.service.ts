@@ -1,17 +1,6 @@
 import { IntersectionObserverService } from './intersection-observer.service';
-import { Injectable, Inject, InjectionToken } from '@angular/core';
-
-export const DEFAULT_ROOT_MARGIN_FUTURE = '-200px';
-
-export const ROOT_MARGIN_FUTURE = new InjectionToken<string>(
-  'ROOT_MARGIN_FUTURE',
-  {
-    providedIn: 'root',
-    factory: function() {
-      return DEFAULT_ROOT_MARGIN_FUTURE;
-    }
-  }
-);
+import { Injectable, Inject } from '@angular/core';
+import { ROOT_MARGIN_FUTURE } from '../config/injection-tokens';
 
 @Injectable({
   providedIn: 'root'
