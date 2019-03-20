@@ -6,6 +6,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
 
+## Events
+
+- before start ("200px", 0.0)
+- start ("0px", 0.0)
+- after start ("-200px", 0.0)
+- before end ("200px", 1.0)
+- end ("0px", 1.0)
+- after end ("-200px", 1.0)
+
 ## InjectionTokens
 
 To be able to configure the behavior of the underlying IntersectionObservers,
