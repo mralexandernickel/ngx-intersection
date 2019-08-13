@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +10,8 @@ export class AppComponent {
 
   public dummies = [];
 
-  constructor() {
-    this.createDummies(20);
+  constructor(public cr: ChangeDetectorRef) {
+    this.createDummies(1);
   }
 
   public createDummies(num: number): void {
@@ -24,7 +24,7 @@ export class AppComponent {
     }
   }
 
-  public enterHandler(): void {
-    console.log('entered');
+  public emitHandler(dummy: any, event: any): void {
+    console.log('emit', dummy.value, event);
   }
 }

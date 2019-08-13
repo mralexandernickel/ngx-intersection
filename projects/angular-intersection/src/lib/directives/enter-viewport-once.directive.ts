@@ -1,27 +1,35 @@
-import { Directive, Output, EventEmitter } from '@angular/core';
+import {
+  Directive,
+  Output,
+  EventEmitter,
+  ElementRef,
+  Inject,
+  PLATFORM_ID
+} from '@angular/core';
 import { EnterViewportDirective } from './enter-viewport.directive';
+import { Callbacks } from '../services/intersection-observer.service';
+import { IntersectionPresentService } from '../services/intersection-present.service';
+import { AbstractViewportDirective } from './abstract.viewport.directive';
 
 @Directive({
-  selector: '[libEnterViewportOnce]'
+  selector: '[libEnterViewportOnce]',
+  exportAs: 'libEnterViewportOnce'
 })
-export class EnterViewportOnceDirective extends EnterViewportDirective {
-  @Output('libEnterViewportOnce') enterViewportOnce: EventEmitter<
+export class EnterViewportOnceDirective extends AbstractViewportDirective {
+  @Output('libEnterViewportOnce') intersectionEmitter: EventEmitter<
     any
   > = new EventEmitter();
 
-  public emitEnter(): void {
-    this.enterViewportOnce.emit(true);
-  }
+  public callbacks: Callbacks = {
+    enter: this.emitIntersection.bind(this),
+    once: true
+  };
 
-  public observeStart(): void {
-    if (this.isBrowser()) {
-      this.intersectionEnterService.observeElement(
-        this.elRef.nativeElement,
-        this.emitEnter.bind(this),
-        true
-      );
-    } else {
-      this.emitEnter();
-    }
+  constructor(
+    public elRef: ElementRef,
+    public intersectionPresentService: IntersectionPresentService,
+    @Inject(PLATFORM_ID) public platformId: Object
+  ) {
+    super(elRef, intersectionPresentService, platformId);
   }
 }

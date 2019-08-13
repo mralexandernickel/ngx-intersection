@@ -56,37 +56,70 @@ describe('IntersectionObserverService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should call callback for element if isIntersecting', () => {
+  it('should call enter-callback for element if isIntersecting', () => {
     const mockElement = document.createElement('div');
     const foo = {
-      mockCallback: (): void => {
+      enter: (): void => {
         return;
       }
     };
     const entries = mockIntersectionObserverEntries(1, true, mockElement);
-    const spyMockCallback: jasmine.Spy = spyOn(foo, 'mockCallback');
-    service.callbacks.set(mockElement, foo.mockCallback);
+    const spyMockCallback: jasmine.Spy = spyOn(foo, 'enter');
+    service.callbacks.set(mockElement, foo);
     service.intersectionObserverCallback(entries);
     expect(spyMockCallback).toHaveBeenCalled();
+  });
+
+  it('should call exit-callback for element if !isIntersecting', () => {
+    const mockElement = document.createElement('div');
+    const foo = {
+      enter: (): void => {
+        return;
+      },
+      exit: (): void => {
+        return;
+      },
+      isIntersecting: true
+    };
+    const entries = mockIntersectionObserverEntries(1, false, mockElement);
+    const spyEnterCallback: jasmine.Spy = spyOn(foo, 'enter');
+    const spyExitCallback: jasmine.Spy = spyOn(foo, 'exit');
+    service.callbacks.set(mockElement, foo);
+    service.intersectionObserverCallback(entries);
+    expect(spyExitCallback).toHaveBeenCalled();
+    expect(spyEnterCallback).not.toHaveBeenCalled();
   });
 
   it('should unobserve element and cleanly teardown if "once" is true', () => {
     const mockElement = document.createElement('div');
     const entries = mockIntersectionObserverEntries(1, true, mockElement);
-    service.callbacks.set(mockElement, () => {});
-    service.matchOnce.set(mockElement, true);
+    service.callbacks.set(mockElement, {
+      enter: () => {},
+      once: true
+    });
     const spyUnobserveElement: jasmine.Spy = spyOn(service, 'unobserveElement');
-    const spyMatchOnceDelete: jasmine.Spy = spyOn(service.matchOnce, 'delete');
     service.intersectionObserverCallback(entries);
     expect(spyUnobserveElement).toHaveBeenCalled();
-    expect(spyMatchOnceDelete).toHaveBeenCalled();
   });
 
-  it('should do nothing if entry is not intersecting', () => {
+  it('should unobserve element and cleanly teardown if "once" is true', () => {
     const mockElement = document.createElement('div');
     const entries = mockIntersectionObserverEntries(1, false, mockElement);
-    const spyMatchOnceGet: jasmine.Spy = spyOn(service.matchOnce, 'get');
+    service.callbacks.set(mockElement, {
+      exit: () => {},
+      once: true,
+      isIntersecting: true
+    });
+    const spyUnobserveElement: jasmine.Spy = spyOn(service, 'unobserveElement');
     service.intersectionObserverCallback(entries);
-    expect(spyMatchOnceGet).not.toHaveBeenCalled();
+    expect(spyUnobserveElement).toHaveBeenCalled();
   });
+
+  // it('should do nothing if entry is not intersecting', () => {
+  //   const mockElement = document.createElement('div');
+  //   const entries = mockIntersectionObserverEntries(1, false, mockElement);
+  //   const spyMatchOnceGet: jasmine.Spy = spyOn(service.callbacks, 'get');
+  //   service.intersectionObserverCallback(entries);
+  //   expect(spyMatchOnceGet).not.toHaveBeenCalled();
+  // });
 });
