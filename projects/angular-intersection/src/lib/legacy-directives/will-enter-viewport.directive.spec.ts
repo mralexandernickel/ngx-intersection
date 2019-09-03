@@ -14,7 +14,7 @@ class TestWillEnterViewportComponent {
   }
 }
 
-describe('EnterViewportDirective', () => {
+describe('WillEnterViewportDirective', () => {
   let component: TestWillEnterViewportComponent;
   let fixture: ComponentFixture<TestWillEnterViewportComponent>;
   let divDebugElement: DebugElement;

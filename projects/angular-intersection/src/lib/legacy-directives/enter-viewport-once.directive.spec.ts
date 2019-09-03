@@ -53,7 +53,7 @@ describe('EnterViewportOnceDirective', () => {
     ).and.returnValue(false);
 
     const spyObserveElement: jasmine.Spy = spyOn(
-      enterViewportOnceDirective.intersectionPresentService,
+      enterViewportOnceDirective.intersectionPresentStartService,
       'observeElement'
     );
 

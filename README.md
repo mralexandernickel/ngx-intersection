@@ -8,30 +8,42 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Events
 
-- before start ("200px", 0.0)
+- before start ("100px", 0.0)
 - start ("0px", 0.0)
-- after start ("-200px", 0.0)
-- before end ("200px", 1.0)
+- after start ("-100px", 0.0)
+- before end ("100px", 1.0)
 - end ("0px", 1.0)
-- after end ("-200px", 1.0)
+- after end ("-100px", 1.0)
 
 ## InjectionTokens
 
 To be able to configure the behavior of the underlying IntersectionObservers,
-we are providing 3 different InjectionTokens. With these you can set the
-rootMargin of the IntersectionObserver-Services.
+we are providing 5 different InjectionTokens. With these you can set the
+rootMargins and the thresholds of the IntersectionObserver-Services.
 
-Available InjectionTokens are
+Available InjectionTokens to customize the
+[root-margins](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#The_intersection_root_and_root_margin)
+are:
 
 - `ROOT_MARGIN_PAST`
 - `ROOT_MARGIN_PRESENT`
 - `ROOT_MARGIN_FUTURE`
 
-To override one (or more) rootMargins, you can simply define the provider
+Available InjectionTokens to customize the
+[thresholds](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Thresholds)
+are:
+
+- `THRESHOLD_START`
+- `THRESHOLD_END`
+
+To override one (or more) InjectionTokens, you can simply define the provider
 inside your NgModule:
 
 ```typescript
-import { ROOT_MARGIN_FUTURE } from '@mralexandernickel/angular-intersection';
+import {
+  ROOT_MARGIN_FUTURE,
+  THRESHOLD_END
+} from '@mralexandernickel/angular-intersection';
 
 @NgModule({
   // ...
@@ -39,12 +51,19 @@ import { ROOT_MARGIN_FUTURE } from '@mralexandernickel/angular-intersection';
     {
       provide: ROOT_MARGIN_FUTURE,
       useValue: '120px'
-    }
+    },
+    {
+      provide: THRESHOLD_END,
+      useValue: 0.75
+    },
   ]
 })
 ```
 
-Allowed Values are everything that is also allowed as CSS margin property.
+Allowed Values for root-margins is everything that is also allowed as CSS margin
+property.
+
+Allowed values for threshold is every number beween `0.0` and `1.0`.
 
 More Information can be found on MDN:
 [IntersectionObserver Docs](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options)

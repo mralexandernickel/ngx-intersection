@@ -10,8 +10,12 @@ export class AppComponent {
 
   public dummies = [];
 
+  public someConfig = {
+    bla: 123
+  };
+
   constructor(public cr: ChangeDetectorRef) {
-    this.createDummies(1);
+    this.createDummies(10);
   }
 
   public createDummies(num: number): void {

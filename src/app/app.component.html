@@ -3,7 +3,7 @@
     <li
       style="margin-top:200vh;background:rgba(0,0,0,.5)"
       *ngFor="let dummy of dummies"
-      (libExitViewport)="emitHandler(dummy, $event)"
+      (libEnterViewport)="emitHandler(dummy, $event)"
     >
       <!-- <ng-container *ngIf="dummy.showElement">Dummy #{{ dummy.value }}</ng-container> -->
       Dummy #{{ dummy.value }}
