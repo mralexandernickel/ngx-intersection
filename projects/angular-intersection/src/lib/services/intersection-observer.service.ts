@@ -1,9 +1,13 @@
 import { IntersectionService } from './abstract.intersection.service';
 
 export interface Callbacks {
+  // Callbacks that get executed when an intersection is entering/starting
   enter?: Function;
+  // Callbacks that get executed when an intersection is exiting/ending
   exit?: Function;
+  // Flag execute registered callbacks only once per element
   once?: boolean;
+  // Is used t oddetermine if an intersection is exiting
   isIntersecting?: boolean;
 }
 
@@ -11,7 +15,7 @@ export class IntersectionObserverService implements IntersectionService {
   /**
    * The IntersectionObserver instance
    */
-  private observer: IntersectionObserver;
+  public observer: IntersectionObserver;
 
   /**
    * A map holding the registered callbacks for enter- and exit-events
@@ -39,7 +43,7 @@ export class IntersectionObserverService implements IntersectionService {
    * @param entry The IntersectionObserverEntry
    * @param callbacks The callbacks registered for this IntersectionObserverEntry's targt
    */
-  private runEnterCallbacks(
+  public runEnterCallbacks(
     entry: IntersectionObserverEntry,
     callbacks: Callbacks
   ): void {
@@ -59,7 +63,7 @@ export class IntersectionObserverService implements IntersectionService {
    * @param entry The IntersectionObserverEntry
    * @param callbacks The callbacks registered for this IntersectionObserverEntry's targt
    */
-  private runExitCallbacks(
+  public runExitCallbacks(
     entry: IntersectionObserverEntry,
     callbacks: Callbacks
   ): void {
@@ -88,10 +92,13 @@ export class IntersectionObserverService implements IntersectionService {
     for (const entry of entries) {
       // Get callbacks bound to this element
       const callbacks = this.callbacks.get(entry.target);
-      // Run callbacks when exiting
-      this.runExitCallbacks(entry, callbacks);
-      // Run callbacks when entering
-      this.runEnterCallbacks(entry, callbacks);
+      // Make sure we have registered callbacks inside the Map
+      if (callbacks) {
+        // Run callbacks when exiting
+        this.runExitCallbacks(entry, callbacks);
+        // Run callbacks when entering
+        this.runEnterCallbacks(entry, callbacks);
+      }
     }
   }
 

@@ -115,6 +115,15 @@ describe('IntersectionObserverService', () => {
     expect(spyUnobserveElement).toHaveBeenCalled();
   });
 
+  it('should do nothing if no callbacks are registered', () => {
+    const mockElement = document.createElement('div');
+    const entries = mockIntersectionObserverEntries(1, false, mockElement);
+    service.callbacks.clear();
+    service.intersectionObserverCallback(entries);
+    const spyRunExitCallbacks: jasmine.Spy = spyOn(service, 'runExitCallbacks');
+    expect(spyRunExitCallbacks).not.toHaveBeenCalled();
+  });
+
   // it('should do nothing if entry is not intersecting', () => {
   //   const mockElement = document.createElement('div');
   //   const entries = mockIntersectionObserverEntries(1, false, mockElement);
