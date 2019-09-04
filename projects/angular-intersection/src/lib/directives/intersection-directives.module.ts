@@ -30,64 +30,38 @@ import {
   IntersectionPresentStartOnceExitDirective
 } from './present/public-api';
 
+export const intersectionDirectives = [
+  // future
+  IntersectionFutureEndDirective,
+  IntersectionFutureEndExitDirective,
+  IntersectionFutureEndOnceDirective,
+  IntersectionFutureEndOnceExitDirective,
+  IntersectionFutureStartDirective,
+  IntersectionFutureStartExitDirective,
+  IntersectionFutureStartOnceDirective,
+  IntersectionFutureStartOnceExitDirective,
+  // past
+  IntersectionPastEndDirective,
+  IntersectionPastEndExitDirective,
+  IntersectionPastEndOnceDirective,
+  IntersectionPastEndOnceExitDirective,
+  IntersectionPastStartDirective,
+  IntersectionPastStartExitDirective,
+  IntersectionPastStartOnceDirective,
+  IntersectionPastStartOnceExitDirective,
+  // present
+  IntersectionPresentEndDirective,
+  IntersectionPresentEndExitDirective,
+  IntersectionPresentEndOnceDirective,
+  IntersectionPresentEndOnceExitDirective,
+  IntersectionPresentStartDirective,
+  IntersectionPresentStartExitDirective,
+  IntersectionPresentStartOnceDirective,
+  IntersectionPresentStartOnceExitDirective
+];
+
 @NgModule({
-  declarations: [
-    // future
-    IntersectionFutureEndDirective,
-    IntersectionFutureEndExitDirective,
-    IntersectionFutureEndOnceDirective,
-    IntersectionFutureEndOnceExitDirective,
-    IntersectionFutureStartDirective,
-    IntersectionFutureStartExitDirective,
-    IntersectionFutureStartOnceDirective,
-    IntersectionFutureStartOnceExitDirective,
-    // past
-    IntersectionPastEndDirective,
-    IntersectionPastEndExitDirective,
-    IntersectionPastEndOnceDirective,
-    IntersectionPastEndOnceExitDirective,
-    IntersectionPastStartDirective,
-    IntersectionPastStartExitDirective,
-    IntersectionPastStartOnceDirective,
-    IntersectionPastStartOnceExitDirective,
-    // present
-    IntersectionPresentEndDirective,
-    IntersectionPresentEndExitDirective,
-    IntersectionPresentEndOnceDirective,
-    IntersectionPresentEndOnceExitDirective,
-    IntersectionPresentStartDirective,
-    IntersectionPresentStartExitDirective,
-    IntersectionPresentStartOnceDirective,
-    IntersectionPresentStartOnceExitDirective
-  ],
-  exports: [
-    // future
-    IntersectionFutureEndDirective,
-    IntersectionFutureEndExitDirective,
-    IntersectionFutureEndOnceDirective,
-    IntersectionFutureEndOnceExitDirective,
-    IntersectionFutureStartDirective,
-    IntersectionFutureStartExitDirective,
-    IntersectionFutureStartOnceDirective,
-    IntersectionFutureStartOnceExitDirective,
-    // past
-    IntersectionPastEndDirective,
-    IntersectionPastEndExitDirective,
-    IntersectionPastEndOnceDirective,
-    IntersectionPastEndOnceExitDirective,
-    IntersectionPastStartDirective,
-    IntersectionPastStartExitDirective,
-    IntersectionPastStartOnceDirective,
-    IntersectionPastStartOnceExitDirective,
-    // present
-    IntersectionPresentEndDirective,
-    IntersectionPresentEndExitDirective,
-    IntersectionPresentEndOnceDirective,
-    IntersectionPresentEndOnceExitDirective,
-    IntersectionPresentStartDirective,
-    IntersectionPresentStartExitDirective,
-    IntersectionPresentStartOnceDirective,
-    IntersectionPresentStartOnceExitDirective
-  ]
+  declarations: intersectionDirectives,
+  exports: intersectionDirectives
 })
 export class IntersectionDirectivesModule {}

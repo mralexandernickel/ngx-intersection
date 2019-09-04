@@ -1,0 +1,100 @@
+<header>
+  <h1 class="color-secondary">ngx-intersection</h1>
+  <pre>ROOT_MAGIN_FUTURE: {{ rootMarginFuture }}</pre>
+  <pre>ROOT_MAGIN_PAST: {{ rootMarginPast }}</pre>
+  <pre>ROOT_MAGIN_PRESENT: {{ rootMarginPresent }}</pre>
+</header>
+
+<div>
+  <ul class="dummies">
+    <li (ngxIntersectionFutureEnd)="emitHandler('ngxIntersectionFutureEnd', $event)">
+      <h2>ngxIntersectionFutureEnd</h2>
+    </li>
+    <li (ngxIntersectionFutureEndExit)="emitHandler('ngxIntersectionFutureEndExit', $event)">
+      <h2>ngxIntersectionFutureEndExit</h2>
+    </li>
+    <li (ngxIntersectionFutureEndOnce)="emitHandler('ngxIntersectionFutureEndOnce', $event)">
+      <h2>ngxIntersectionFutureEndOnce</h2>
+    </li>
+    <li (ngxIntersectionFutureEndOnceExit)="emitHandler('ngxIntersectionFutureEndOnceExit', $event)">
+      <h2>ngxIntersectionFutureEndOnceExit</h2>
+    </li>
+    <li (ngxIntersectionFutureStart)="emitHandler('ngxIntersectionFutureStart', $event)">
+      <h2>ngxIntersectionFutureStart</h2>
+    </li>
+    <li (ngxIntersectionFutureStartExit)="emitHandler('ngxIntersectionFutureStartExit', $event)">
+      <h2>ngxIntersectionFutureStartExit</h2>
+    </li>
+    <li (ngxIntersectionFutureStartOnce)="emitHandler('ngxIntersectionFutureStartOnce', $event)">
+      <h2>ngxIntersectionFutureStartOnce</h2>
+    </li>
+    <li (ngxIntersectionFutureStartOnceExit)="emitHandler('ngxIntersectionFutureStartOnceExit', $event)">
+      <h2>ngxIntersectionFutureStartOnceExit</h2>
+    </li>
+    <li (ngxIntersectionPastEnd)="emitHandler('ngxIntersectionPastEnd', $event)">
+      <h2>ngxIntersectionPastEnd</h2>
+    </li>
+    <li (ngxIntersectionPastEndExit)="emitHandler('ngxIntersectionPastEndExit', $event)">
+      <h2>ngxIntersectionPastEndExit</h2>
+    </li>
+    <li (ngxIntersectionPastEndOnce)="emitHandler('ngxIntersectionPastEndOnce', $event)">
+      <h2>ngxIntersectionPastEndOnce</h2>
+    </li>
+    <li (ngxIntersectionPastEndOnceExit)="emitHandler('ngxIntersectionPastEndOnceExit', $event)">
+      <h2>ngxIntersectionPastEndOnceExit</h2>
+    </li>
+    <li (ngxIntersectionPastStart)="emitHandler('ngxIntersectionPastStart', $event)">
+      <h2>ngxIntersectionPastStart</h2>
+    </li>
+    <li (ngxIntersectionPastStartExit)="emitHandler('ngxIntersectionPastStartExit', $event)">
+      <h2>ngxIntersectionPastStartExit</h2>
+    </li>
+    <li (ngxIntersectionPastStartOnce)="emitHandler('ngxIntersectionPastStartOnce', $event)">
+      <h2>ngxIntersectionPastStartOnce</h2>
+    </li>
+    <li (ngxIntersectionPastStartOnceExit)="emitHandler('ngxIntersectionPastStartOnceExit', $event)">
+      <h2>ngxIntersectionPastStartOnceExit</h2>
+    </li>
+    <li (ngxIntersectionPresentEnd)="emitHandler('ngxIntersectionPresentEnd', $event)">
+      <h2>ngxIntersectionPresentEnd</h2>
+    </li>
+    <li (ngxIntersectionPresentEndExit)="emitHandler('ngxIntersectionPresentEndExit', $event)">
+      <h2>ngxIntersectionPresentEndExit</h2>
+    </li>
+    <li (ngxIntersectionPresentEndOnce)="emitHandler('ngxIntersectionPresentEndOnce', $event)">
+      <h2>ngxIntersectionPresentEndOnce</h2>
+    </li>
+    <li (ngxIntersectionPresentEndOnceExit)="emitHandler('ngxIntersectionPresentEndOnceExit', $event)">
+      <h2>ngxIntersectionPresentEndOnceExit</h2>
+    </li>
+    <li (ngxIntersectionPresentStart)="emitHandler('ngxIntersectionPresentStart', $event)">
+      <h2>ngxIntersectionPresentStart</h2>
+    </li>
+    <li (ngxIntersectionPresentStartExit)="emitHandler('ngxIntersectionPresentStartExit', $event)">
+      <h2>ngxIntersectionPresentStartExit</h2>
+    </li>
+    <li (ngxIntersectionPresentStartOnce)="emitHandler('ngxIntersectionPresentStartOnce', $event)">
+      <h2>ngxIntersectionPresentStartOnce</h2>
+    </li>
+    <li (ngxIntersectionPresentStartOnceExit)="emitHandler('ngxIntersectionPresentStartOnceExit', $event)">
+      <h2>ngxIntersectionPresentStartOnceExit</h2>
+    </li>
+  </ul>
+</div>
+
+<div class="overlay">
+  <div
+    class="future"
+    [ngStyle]="{'height': 'calc(100vh - ' + rootMarginFuture + ' * 2 - 2px)', 'width': 'calc(100vw - ' + rootMarginFuture + ' * 2 - 2px)', 'top': rootMarginFuture, 'left': rootMarginFuture}"
+  ></div>
+  <div
+    class="past"
+    [ngStyle]="{'height': 'calc(100vh - ' + rootMarginPast.slice(1) + ' * 2 - 2px)', 'width': 'calc(100vw - ' + rootMarginPast.slice(1) + ' * 2 - 2px)', 'top': rootMarginPast.slice(1), 'left': rootMarginPast.slice(1)}"
+  ></div>
+  <div
+    class="present"
+    [ngStyle]="{'height': 'calc(100vh - ' + rootMarginPresent.slice(1) + ' * 2 - 2px)', 'width': 'calc(100vw - ' + rootMarginPresent.slice(1) + ' * 2 - 2px)', 'top': rootMarginPresent.slice(1), 'left': rootMarginPresent.slice(1)}"
+  ></div>
+</div>
+
+<app-scroll-motivation></app-scroll-motivation>

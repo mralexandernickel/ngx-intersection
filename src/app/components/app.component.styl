@@ -1,0 +1,68 @@
+@require '../../_variables'
+
+header
+  text-align: center
+
+  h1
+    font-size: 128px
+
+.dummies
+  list-style: none
+  margin: 0 auto
+  width: 960px
+
+  li
+    background: $color--functional-1
+    height: 80vh
+    margin-top: 200vh
+    overflow: hidden
+    position: relative
+
+    h2
+      font-size: 24px
+      margin-top: 24px
+      text-align: center
+
+    .index
+      bottom: 0
+      color: $color--functional-2
+      font-size: 128px
+      line-height: 1
+      position: absolute
+      right: 0
+
+.overlay
+  bottom: 0
+  height: 100vh
+  left: 0
+  position: fixed
+  right: 0
+  top: 0
+  width: 100vw
+  z-index: 9999
+
+  &.hidden
+    opacity: 0
+
+  div
+    border: 1px solid $color--black
+    display: block
+    position: absolute
+
+    &::before
+      background: $color--black
+      color: $color--white
+      display: block
+      padding: 0 10px
+      position: absolute
+      right: 0
+      top: 0
+
+    &.future::before
+      content: 'future'
+
+    &.past::before
+      content: 'past'
+
+    &.present::before
+      content: 'present'

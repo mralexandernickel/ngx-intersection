@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'
+@require _variables
+@require _color-helpers
+
+*
+  margin: 0
+  outline: 0
+  padding: 0
+
+html
+  height: 100%
+
+  body
+    background: $color--primary
+    color: $color--secondary
+    font-family: $font-family--default
+    font-size: $font-size--default
+    letter-spacing: $letter-spacing--default
+    line-height: $line-height--default
+    min-height: 100%
+
+.mat-snack-bar-container
+  background: $color--black
+  border-radius: 0 !important
+  color: $color--white
+
+  .mat-simple-snackbar-action
+    color: $color--error
