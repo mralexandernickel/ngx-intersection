@@ -41,7 +41,10 @@ export class AppComponent {
     let html = '';
     for (let index = 0; index < this.dummies.length; index++) {
       const dummy = this.dummies[index];
-      html += `<li class="observed" (${dummy.selector})="emitHandler('${dummy.selector}', $event)"><h2>${dummy.selector}</h2><a (click)="resetEmitted($event)" class="reset"><img src="/assets/undo-variant.svg"></a></li>\r\n`;
+      html += `<li class="observed" (${dummy.selector})="emitHandler('${dummy.selector}', $event)">
+      <h2>${dummy.selector}</h2>
+      <a (click)="resetEmitted($event)" class="reset">
+      <img src="/assets/undo-variant.svg"></a></li>\r\n`;
 
       if (dummy.selector === 'ngxIntersectionFutureStartExit') {
         html +=
@@ -49,8 +52,9 @@ export class AppComponent {
       }
 
       if (dummy.selector === 'ngxIntersectionFutureStartOnceExit') {
-        html +=
-          "<li><h2>...scroll up a bit and reset...</h2><p>If you then scroll back down and up again, you will see that the element won't emit a second time. It is because all directives having *Once* in their name will be unobserved after the first emit.</p></li>";
+        html += `<li><h2>...scroll up a bit and reset...</h2>
+          <p>If you then scroll back down and up again, you will see that the element won't emit a second time.
+          It is because all directives having *Once* in their name will be unobserved after the first emit.</p></li>`;
       }
 
       if (index !== this.dummies.length - 1) {
