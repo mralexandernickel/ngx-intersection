@@ -1,12 +1,27 @@
 @require variables
+@require mixins
 
 h1, h2, h3, h4, h5, h6
   font-family: $font-family--georgia
   font-weight: 300
   margin-bottom: $space--default
 
-h1
-  font-size: 128px
++gt-sm()
+  h1
+    font-size: 128px
 
-h2
-  font-size: 72px
+  h2
+    font-size: 72px
+
+  h3
+    font-size: 28px
+
++lt-md()
+  h1
+    font-size: 48px
+
+  h2
+    font-size: 36px
+
+  h3
+    font-size: 20px

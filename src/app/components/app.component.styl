@@ -1,14 +1,64 @@
 @require variables
 
+$menu--trigger--size = 40px
+$menu--height = ($space--default * 4)
+
+.menu--trigger
+  height: $menu--trigger--size
+  left: $space--default
+  mix-blend-mode: screen
+  position: fixed
+  top: (($menu--height - $menu--trigger--size) / 2)
+  width: $menu--trigger--size
+  z-index: 10
+
+  &.open
+    svg
+      path
+        fill: $color--primary
+
+  svg
+    height: $menu--trigger--size
+    width: $menu--trigger--size
+
+    path
+      fill: $color--secondary
+
+.menu
+  background-color: $color--primary
+  height: $menu--height
+  left: 0
+  overflow: hidden
+  position: fixed
+  top: 0
+  transition: all .15s ease-in-out
+  width: 0
+  z-index: 9
+
+  &.open
+    background-color: $color--secondary
+    color: $color--primary
+    width: 100vw
+
+  .actions
+    padding: 0 $space--default 0 ($menu--trigger--size + $space--default * 2)
+    text-align: right
+
+    label
+      display: inline-block
+      height: $menu--height
+      line-height: $menu--height
+
+.arrow
+  margin-bottom: 100px
+  margin-top: 100px
+
 a
   cursor: pointer
 
 .description
   min-height: 100vh
   text-align: center
-
-  img
-    margin-top: 100px
 
 .small-description
   text-align: center
@@ -27,23 +77,24 @@ a
     .reset
       bottom: 20px
       left: 50%
-      margin-left: -12px
+      margin-left: -24px
       position: absolute
 
   li.observed
     border: 2px dashed $color--secondary
     color: $color--secondary
-    height: 200px // height of the element needs to be smaller than viewport subtracted by the rootMargin
+    height: 40vh // height of the element needs to be smaller than viewport subtracted by the rootMargin
+    margin: 0 auto 50vh
     overflow: hidden
     position: relative
+    width: 60vw
 
     &.emitted
       background: $color--secondary
       border: none
       color: $color--primary
 
-    h2
-      font-size: 24px
+    h3
       margin-top: 24px
 
     .index
@@ -62,10 +113,10 @@ a
   right: 0
   top: 0
   width: 100vw
-  z-index: 99
+  z-index: -1
 
   &.hidden
-    opacity: 0
+    display: none
 
   div
     border-style: dashed

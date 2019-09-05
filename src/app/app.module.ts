@@ -18,9 +18,9 @@ import { ScrollMotivationComponent } from './components/scroll-motivation/scroll
     IntersectionDirectivesModule
   ],
   providers: [
-    { provide: ROOT_MARGIN_FUTURE, useValue: '0px' },
-    { provide: ROOT_MARGIN_PAST, useValue: '-100px' },
-    { provide: ROOT_MARGIN_PRESENT, useValue: '-50px' }
+    { provide: ROOT_MARGIN_FUTURE, useValue: '0%' },
+    { provide: ROOT_MARGIN_PAST, useValue: '-10%' },
+    { provide: ROOT_MARGIN_PRESENT, useValue: '-5%' }
   ],
   bootstrap: [AppComponent]
 })

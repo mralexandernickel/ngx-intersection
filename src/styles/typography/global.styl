@@ -1,11 +1,19 @@
 @require variables
+@require mixins
 
 html body
   color: $color--secondary
   font-family: $font-family--default
-  font-size: $font-size--default
   letter-spacing: $letter-spacing--default
   line-height: $line-height--default
+
++gt-sm()
+  html body
+    font-size: $font-size--default
+
++lt-md()
+  html body
+    font-size: $font-size--default
 
 p
   margin-bottom: $space--default
