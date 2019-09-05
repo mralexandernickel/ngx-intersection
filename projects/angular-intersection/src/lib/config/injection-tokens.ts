@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
 
-export const DEFAULT_ROOT_MARGIN_FUTURE = '100px';
+export const DEFAULT_ROOT_MARGIN_FUTURE = '10%';
 export const ROOT_MARGIN_FUTURE = new InjectionToken<string>(
   'ROOT_MARGIN_FUTURE',
   {
@@ -9,13 +9,13 @@ export const ROOT_MARGIN_FUTURE = new InjectionToken<string>(
   }
 );
 
-export const DEFAULT_ROOT_MARGIN_PAST = '-100px';
+export const DEFAULT_ROOT_MARGIN_PAST = '-10%';
 export const ROOT_MARGIN_PAST = new InjectionToken<string>('ROOT_MARGIN_PAST', {
   providedIn: 'root',
   factory: () => DEFAULT_ROOT_MARGIN_PAST
 });
 
-export const DEFAULT_ROOT_MARGIN_PRESENT = '0px';
+export const DEFAULT_ROOT_MARGIN_PRESENT = '0%';
 export const ROOT_MARGIN_PRESENT = new InjectionToken<string>(
   'ROOT_MARGIN_PRESENT',
   {

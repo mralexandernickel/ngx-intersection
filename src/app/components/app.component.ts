@@ -17,6 +17,9 @@ export class AppComponent {
 
   public flash$ = new Subject();
 
+  public showOverlay = false;
+  public showMenu = false;
+
   constructor(
     public cr: ChangeDetectorRef,
     @Inject(ROOT_MARGIN_FUTURE) public rootMarginFuture: string,
@@ -41,9 +44,9 @@ export class AppComponent {
     for (let index = 0; index < dummies.length; index++) {
       const dummy = dummies[index];
       html += `<li class="observed" (${dummy.selector})="emitHandler('${dummy.selector}', $event)">
-      <h2>${dummy.selector}</h2>
+      <h3>(${dummy.selector})</h3>
       <a (click)="resetEmitted($event)" class="reset">
-      <img src="/assets/undo-variant.svg"></a></li>\r\n`;
+      <img src="assets/undo-variant.svg"></a></li>\r\n`;
 
       if (dummy.selector === 'ngxIntersectionFutureStartExit') {
         html +=
@@ -57,11 +60,11 @@ export class AppComponent {
       }
 
       if (index !== dummies.length - 1) {
-        html += '<li><img src="/assets/arrow-down.svg"></li>\r\n';
+        html += '<li><img src="assets/arrow-down.svg"></li>\r\n';
       } else {
         html += `<li><h2>...that's it!</h2></li>`;
         html +=
-          '<li><a (click)="scrollToTop()"><img src="/assets/arrow-up.svg"></a></li>\r\n';
+          '<li><a (click)="scrollToTop()"><img src="assets/arrow-up.svg"></a></li>\r\n';
       }
     }
     console.log(html);
@@ -77,5 +80,14 @@ export class AppComponent {
 
   public emitHandler(selector: string, event: IntersectionObserverEntry): void {
     event.target.classList.add('emitted');
+  }
+
+  public toggleOverlay(): void {
+    this.showOverlay = !this.showOverlay;
+    console.log('### showOverlay', this.showOverlay);
+  }
+
+  public toggleMenu(): void {
+    this.showMenu = !this.showMenu;
   }
 }
