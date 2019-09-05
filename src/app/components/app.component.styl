@@ -3,26 +3,32 @@
 a
   cursor: pointer
 
-header
-  background-color: $color--primary
-  height: 100vh
+.description
+  min-height: 100vh
   text-align: center
-
-  h1
-    font-size: 128px
 
   img
     margin-top: 100px
 
+.small-description
+  text-align: center
+
+  h2
+    margin-bottom: ($space--default * 6)
+
 .dummies
-  // background-image: url('/assets/chevron-down.svg')
-  // background-position: top center
-  // background-repeat: repeat-y
   list-style: none
 
   li
     margin-bottom: 50vh
+    position: relative
     text-align: center
+
+    .reset
+      bottom: 20px
+      left: 50%
+      margin-left: -12px
+      position: absolute
 
   li.observed
     border: 2px dashed $color--secondary
@@ -62,18 +68,18 @@ header
     opacity: 0
 
   div
-    border-style: solid
-    border-width: 1px
+    border-style: dashed
+    border-width: 2px
     display: block
     position: absolute
 
     &::before
-      color: $color--white
+      color: $color--primary
       display: block
       padding: 0 10px
       position: absolute
-      right: 0
-      top: 0
+      right: -2px
+      top: -2px
 
     &.future
       border-color: $color--functional-1

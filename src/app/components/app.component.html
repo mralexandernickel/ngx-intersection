@@ -1,10 +1,56 @@
-<header>
+<header class="description">
   <div class="container">
     <h1
       class="color-secondary"
       [ngStyle]="{'padding-top': rootMarginPast.slice(1)}"
     >ngx-intersection</h1>
 
+    <p>Ngx-intersection is a set of directives and classes for Angular to make it *really* easy to make use of the
+      IntersectionObserver API. One main goal has been to use the absolute minimum count of IntersectionObserver
+      instances, so there are many situations where you use different directives, which itself use the *same*
+      IntersectionObserver instance under the hood! The library also comes with a set of services you can use from
+      within your component's controllers.</p>
+
+    <img src="/assets/arrow-down.svg">
+  </div>
+
+
+  <!-- <pre>ROOT_MAGIN_FUTURE: {{ rootMarginFuture }}</pre>
+  <pre>ROOT_MAGIN_PAST: {{ rootMarginPast }}</pre>
+  <pre>ROOT_MAGIN_PRESENT: {{ rootMarginPresent }}</pre> -->
+</header>
+
+<section class="description">
+  <div class="container">
+    <h2>Naming Convention</h2>
+    <p>Because I wanted to provide directives for all possible and useful situations, it was hard (e.g. impossible) to
+      find
+      declarative names for the directives and classes. So I decided to follow a clear naming-convention at least:</p>
+    <p>I defined 3 different rootMargins, which gives us the opportunity to let the IntersectionObserver emit when the
+      observed element is still a bit outside the viewport, when the element is entering the viewport, and when the
+      element already entered the viewport a bit. The aliases fir this are "past", "present" and "future". The offset to
+      define the exact position can be configured with InjectionTokens.</p>
+    <p>The thresholds only have 2 aliases. One for the threshold of 0 (the next scrolled pixel will bring the element' s
+      first pixel into the viewport) and one for the threshold of 1 (all pixels of the element are inside the viewport).
+      The alias for threshold 0 is *Start* and for 1 its *End*.</p>
+    <p>To be able to let an IntersectionObserver emit only once for an element (by default the IntersectionObserver will
+      emit whenever the element is intersecting), I've added a directive with *Once* in the name for every possible
+      rootMargin/threshold combination.</p>
+    <p>And last but not least, I wanted directives that emit when an element was intersecting (e.g. just left the
+      viewport/rootMargins). These directives are ending with *Exit* in their names.</p>
+    <h3>Example</h3>
+    <p>So a classical usecase for IntersectionObserver is the lazyloading of images. You want the image to be loaded a
+      bit before (*Future*) the first pixel of the image (*Start*) is entering the viewport. Since the image is already
+      loaded after the element entered the viewport once, you don't need the IntersectionObserver to emit a second time
+      (*Once*). So the name for the directive you need is *ngxIntersectionFutureStartOnce*.</p>
+
+    <img src="/assets/arrow-down.svg">
+  </div>
+</section>
+
+<section class="description">
+  <div class="container">
+    <h2>Features in this Demo</h2>
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
       dolore
       magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
@@ -17,224 +63,287 @@
 
     <img src="/assets/arrow-down.svg">
   </div>
+</section>
 
-
-  <!-- <pre>ROOT_MAGIN_FUTURE: {{ rootMarginFuture }}</pre>
-  <pre>ROOT_MAGIN_PAST: {{ rootMarginPast }}</pre>
-  <pre>ROOT_MAGIN_PRESENT: {{ rootMarginPresent }}</pre> -->
-</header>
+<section class="small-description">
+  <div class="container">
+    <h2>Then let's start...</h2>
+  </div>
+</section>
 
 <div class="container">
+
   <ul class="dummies">
     <li
       class="observed"
       (ngxIntersectionFutureEnd)="emitHandler('ngxIntersectionFutureEnd', $event)"
     >
-      <h2>ngxIntersectionFutureEnd</h2>
+      <h2>ngxIntersectionFutureEnd</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionFutureEndExit)="emitHandler('ngxIntersectionFutureEndExit', $event)"
     >
-      <h2>ngxIntersectionFutureEndExit</h2>
+      <h2>ngxIntersectionFutureEndExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionFutureEndOnce)="emitHandler('ngxIntersectionFutureEndOnce', $event)"
     >
-      <h2>ngxIntersectionFutureEndOnce</h2>
+      <h2>ngxIntersectionFutureEndOnce</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionFutureEndOnceExit)="emitHandler('ngxIntersectionFutureEndOnceExit', $event)"
     >
-      <h2>ngxIntersectionFutureEndOnceExit</h2>
+      <h2>ngxIntersectionFutureEndOnceExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionFutureStart)="emitHandler('ngxIntersectionFutureStart', $event)"
     >
-      <h2>ngxIntersectionFutureStart</h2>
+      <h2>ngxIntersectionFutureStart</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionFutureStartExit)="emitHandler('ngxIntersectionFutureStartExit', $event)"
     >
-      <h2>ngxIntersectionFutureStartExit</h2>
+      <h2>ngxIntersectionFutureStartExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
     <li>
+      <h2>...scroll up a bit...</h2>
+      <p>(you can see that the last element has emitted now)</p>
+    </li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionFutureStartOnce)="emitHandler('ngxIntersectionFutureStartOnce', $event)"
     >
-      <h2>ngxIntersectionFutureStartOnce</h2>
+      <h2>ngxIntersectionFutureStartOnce</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionFutureStartOnceExit)="emitHandler('ngxIntersectionFutureStartOnceExit', $event)"
     >
-      <h2>ngxIntersectionFutureStartOnceExit</h2>
+      <h2>ngxIntersectionFutureStartOnceExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
     <li>
+      <h2>...scroll up a bit and reset...</h2>
+      <p>If you then scroll back down and up again, you will see that the element won't emit a second time. It is
+        because all
+        directives having *Once* in their name will be unobserved after the first emit.</p>
+    </li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPastEnd)="emitHandler('ngxIntersectionPastEnd', $event)"
     >
-      <h2>ngxIntersectionPastEnd</h2>
+      <h2>ngxIntersectionPastEnd</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPastEndExit)="emitHandler('ngxIntersectionPastEndExit', $event)"
     >
-      <h2>ngxIntersectionPastEndExit</h2>
+      <h2>ngxIntersectionPastEndExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPastEndOnce)="emitHandler('ngxIntersectionPastEndOnce', $event)"
     >
-      <h2>ngxIntersectionPastEndOnce</h2>
+      <h2>ngxIntersectionPastEndOnce</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPastEndOnceExit)="emitHandler('ngxIntersectionPastEndOnceExit', $event)"
     >
-      <h2>ngxIntersectionPastEndOnceExit</h2>
+      <h2>ngxIntersectionPastEndOnceExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPastStart)="emitHandler('ngxIntersectionPastStart', $event)"
     >
-      <h2>ngxIntersectionPastStart</h2>
+      <h2>ngxIntersectionPastStart</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPastStartExit)="emitHandler('ngxIntersectionPastStartExit', $event)"
     >
-      <h2>ngxIntersectionPastStartExit</h2>
+      <h2>ngxIntersectionPastStartExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPastStartOnce)="emitHandler('ngxIntersectionPastStartOnce', $event)"
     >
-      <h2>ngxIntersectionPastStartOnce</h2>
+      <h2>ngxIntersectionPastStartOnce</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPastStartOnceExit)="emitHandler('ngxIntersectionPastStartOnceExit', $event)"
     >
-      <h2>ngxIntersectionPastStartOnceExit</h2>
+      <h2>ngxIntersectionPastStartOnceExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPresentEnd)="emitHandler('ngxIntersectionPresentEnd', $event)"
     >
-      <h2>ngxIntersectionPresentEnd</h2>
+      <h2>ngxIntersectionPresentEnd</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPresentEndExit)="emitHandler('ngxIntersectionPresentEndExit', $event)"
     >
-      <h2>ngxIntersectionPresentEndExit</h2>
+      <h2>ngxIntersectionPresentEndExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPresentEndOnce)="emitHandler('ngxIntersectionPresentEndOnce', $event)"
     >
-      <h2>ngxIntersectionPresentEndOnce</h2>
+      <h2>ngxIntersectionPresentEndOnce</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPresentEndOnceExit)="emitHandler('ngxIntersectionPresentEndOnceExit', $event)"
     >
-      <h2>ngxIntersectionPresentEndOnceExit</h2>
+      <h2>ngxIntersectionPresentEndOnceExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPresentStart)="emitHandler('ngxIntersectionPresentStart', $event)"
     >
-      <h2>ngxIntersectionPresentStart</h2>
+      <h2>ngxIntersectionPresentStart</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPresentStartExit)="emitHandler('ngxIntersectionPresentStartExit', $event)"
     >
-      <h2>ngxIntersectionPresentStartExit</h2>
+      <h2>ngxIntersectionPresentStartExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPresentStartOnce)="emitHandler('ngxIntersectionPresentStartOnce', $event)"
     >
-      <h2>ngxIntersectionPresentStartOnce</h2>
+      <h2>ngxIntersectionPresentStartOnce</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><img src="/assets/arrow-down.svg">
-    <li>
+    <li><img src="/assets/arrow-down.svg"></li>
     <li
       class="observed"
       (ngxIntersectionPresentStartOnceExit)="emitHandler('ngxIntersectionPresentStartOnceExit', $event)"
     >
-      <h2>ngxIntersectionPresentStartOnceExit</h2>
+      <h2>ngxIntersectionPresentStartOnceExit</h2><a
+        (click)="resetEmitted($event)"
+        class="reset"
+      ><img src="/assets/undo-variant.svg"></a>
     </li>
-    <li><a (click)="scrollToTop()"><img src="/assets/arrow-up.svg"></a>
     <li>
+      <h2>...that's it!</h2>
+    </li>
+    <li><a (click)="scrollToTop()"><img src="/assets/arrow-up.svg"></a></li>
   </ul>
 </div>
 
 <div
   class="overlay"
-  style="display:none;"
+  style="display:none"
 >
   <div
     class="future"
-    [ngStyle]="{'height': 'calc(100vh - ' + rootMarginFuture + ' * 2 - 2px)', 'width': 'calc(100vw - ' + rootMarginFuture + ' * 2 - 2px)', 'top': rootMarginFuture, 'left': rootMarginFuture}"
+    [ngStyle]="{'height': 'calc(100vh - ' + rootMarginFuture + ' * 2 - 4px)', 'width': 'calc(100vw - ' + rootMarginFuture + ' * 2 - 4px)', 'top': rootMarginFuture, 'left': rootMarginFuture}"
   ></div>
   <div
     class="past"
-    [ngStyle]="{'height': 'calc(100vh - ' + rootMarginPast.slice(1) + ' * 2 - 2px)', 'width': 'calc(100vw - ' + rootMarginPast.slice(1) + ' * 2 - 2px)', 'top': rootMarginPast.slice(1), 'left': rootMarginPast.slice(1)}"
+    [ngStyle]="{'height': 'calc(100vh - ' + rootMarginPast.slice(1) + ' * 2 - 4px)', 'width': 'calc(100vw - ' + rootMarginPast.slice(1) + ' * 2 - 4px)', 'top': rootMarginPast.slice(1), 'left': rootMarginPast.slice(1)}"
   ></div>
   <div
     class="present"
-    [ngStyle]="{'height': 'calc(100vh - ' + rootMarginPresent.slice(1) + ' * 2 - 2px)', 'width': 'calc(100vw - ' + rootMarginPresent.slice(1) + ' * 2 - 2px)', 'top': rootMarginPresent.slice(1), 'left': rootMarginPresent.slice(1)}"
+    [ngStyle]="{'height': 'calc(100vh - ' + rootMarginPresent.slice(1) + ' * 2 - 4px)', 'width': 'calc(100vw - ' + rootMarginPresent.slice(1) + ' * 2 - 4px)', 'top': rootMarginPresent.slice(1), 'left': rootMarginPresent.slice(1)}"
   ></div>
 </div>
