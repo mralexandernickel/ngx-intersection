@@ -17,30 +17,29 @@ export class AppComponent {
 
   public flash$ = new Subject();
 
-  public dummies = intersectionDirectives.map((item: any) => {
-    const data = {
-      name: item.name,
-      selector: item.decorators[0].args[0].selector.slice(1, -1)
-    };
-    return data;
-  });
-
   constructor(
     public cr: ChangeDetectorRef,
     @Inject(ROOT_MARGIN_FUTURE) public rootMarginFuture: string,
     @Inject(ROOT_MARGIN_PAST) public rootMarginPast: string,
     @Inject(ROOT_MARGIN_PRESENT) public rootMarginPresent: string
   ) {
-    // this.generateHtml();
+    // this.generateDemoHtml();
   }
 
   /**
    * Helper method to generate the HTML for all demo boxes
    */
-  public generateHtml(): void {
+  public generateDemoHtml(): void {
+    const dummies = intersectionDirectives.map((item: any) => {
+      const data = {
+        name: item.name,
+        selector: item.decorators[0].args[0].selector.slice(1, -1)
+      };
+      return data;
+    });
     let html = '';
-    for (let index = 0; index < this.dummies.length; index++) {
-      const dummy = this.dummies[index];
+    for (let index = 0; index < dummies.length; index++) {
+      const dummy = dummies[index];
       html += `<li class="observed" (${dummy.selector})="emitHandler('${dummy.selector}', $event)">
       <h2>${dummy.selector}</h2>
       <a (click)="resetEmitted($event)" class="reset">
@@ -57,7 +56,7 @@ export class AppComponent {
           It is because all directives having *Once* in their name will be unobserved after the first emit.</p></li>`;
       }
 
-      if (index !== this.dummies.length - 1) {
+      if (index !== dummies.length - 1) {
         html += '<li><img src="/assets/arrow-down.svg"></li>\r\n';
       } else {
         html += `<li><h2>...that's it!</h2></li>`;
