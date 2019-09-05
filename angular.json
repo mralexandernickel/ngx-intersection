@@ -29,6 +29,11 @@
             "styles": [
               "src/styles.styl"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "scripts": []
           },
           "configurations": {

@@ -1,0 +1,61 @@
+@require variables
+
+// 
+// MIXINS FOR RESPONSIVE LAYOUT
+// 
+// These mixins are matching exactly the ones use in FlexLayoutModule.
+// For further information plase visit the provided link
+// 
+// @link https://github.com/angular/flex-layout/wiki/Responsive-API#mediaqueries-and-aliases
+// =============================================================================
+xs()
+  @media screen and (max-width: ($breakpoint--xs - 1))
+    {block} // @stylint ignore
+
+gt-xs()
+  @media screen and (min-width: $breakpoint--xs)
+    {block} // @stylint ignore
+
+lt-sm()
+  @media screen and (max-width: ($breakpoint--xs - 1))
+    {block} // @stylint ignore
+
+sm()
+  @media screen and (min-width: $breakpoint--xs) and (max-width: ($breakpoint--sm - 1))
+    {block} // @stylint ignore
+
+gt-sm()
+  @media screen and (min-width: $breakpoint--sm)
+    {block} // @stylint ignore
+
+lt-md()
+  @media screen and (max-width: ($breakpoint--sm - 1))
+    {block} // @stylint ignore
+
+md()
+  @media screen and (min-width: $breakpoint--sm) and (max-width: ($breakpoint--md - 1))
+    {block} // @stylint ignore
+
+gt-md()
+  @media screen and (min-width: $breakpoint--md)
+    {block} // @stylint ignore
+
+lt-lg()
+  @media screen and (max-width: ($breakpoint--md - 1))
+    {block} // @stylint ignore
+
+lg()
+  @media screen and (min-width: $breakpoint--md) and (max-width: ($breakpoint--lg - 1))
+    {block} // @stylint ignore
+
+gt-lg()
+  @media screen and (min-width: $breakpoint--lg)
+    {block} // @stylint ignore
+
+lt-xl()
+  @media screen and (max-width: ($breakpoint--lg - 1))
+    {block} // @stylint ignore
+
+xl()
+  @media screen and (min-width: $breakpoint--lg) and (max-width: ($breakpoint--xl - 1))
+    {block} // @stylint ignore

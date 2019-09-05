@@ -1,0 +1,103 @@
+@require variables
+
+a
+  cursor: pointer
+
+.description
+  min-height: 100vh
+  text-align: center
+
+  img
+    margin-top: 100px
+
+.small-description
+  text-align: center
+
+  h2
+    margin-bottom: ($space--default * 6)
+
+.dummies
+  list-style: none
+
+  li
+    margin-bottom: 50vh
+    position: relative
+    text-align: center
+
+    .reset
+      bottom: 20px
+      left: 50%
+      margin-left: -12px
+      position: absolute
+
+  li.observed
+    border: 2px dashed $color--secondary
+    color: $color--secondary
+    height: 200px // height of the element needs to be smaller than viewport subtracted by the rootMargin
+    overflow: hidden
+    position: relative
+
+    &.emitted
+      background: $color--secondary
+      border: none
+      color: $color--primary
+
+    h2
+      font-size: 24px
+      margin-top: 24px
+
+    .index
+      bottom: 0
+      color: $color--functional-2
+      font-size: 128px
+      line-height: 1
+      position: absolute
+      right: 0
+
+.overlay
+  bottom: 0
+  height: 100vh
+  left: 0
+  position: fixed
+  right: 0
+  top: 0
+  width: 100vw
+  z-index: 99
+
+  &.hidden
+    opacity: 0
+
+  div
+    border-style: dashed
+    border-width: 2px
+    display: block
+    position: absolute
+
+    &::before
+      color: $color--primary
+      display: block
+      padding: 0 10px
+      position: absolute
+      right: -2px
+      top: -2px
+
+    &.future
+      border-color: $color--functional-1
+
+      &::before
+        background: $color--functional-1
+        content: 'future'
+
+    &.past
+      border-color: $color--functional-2
+
+      &::before
+        background: $color--functional-2
+        content: 'past'
+
+    &.present
+      border-color: $color--functional-3
+
+      &::before
+        background: $color--functional-3
+        content: 'present'

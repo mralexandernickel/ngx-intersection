@@ -1,0 +1,11 @@
+@require mixins
+
+.container
+  margin: 0 auto
+
+  +lt-md()
+    max-width: 100%
+    padding: 0 $space--default
+
+  +gt-sm()
+    max-width: 960px
