@@ -23,8 +23,8 @@ import { ScrollMotivationComponent } from './components/scroll-motivation/scroll
   ],
   providers: [
     { provide: ROOT_MARGIN_FUTURE, useValue: '0px' },
-    { provide: ROOT_MARGIN_PAST, useValue: '-200px' },
-    { provide: ROOT_MARGIN_PRESENT, useValue: '-100px' }
+    { provide: ROOT_MARGIN_PAST, useValue: '-100px' },
+    { provide: ROOT_MARGIN_PRESENT, useValue: '-50px' }
   ],
   bootstrap: [AppComponent]
 })

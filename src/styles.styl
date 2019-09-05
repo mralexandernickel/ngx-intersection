@@ -1,6 +1,5 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css'
-@require _variables
-@require _color-helpers
+@require styles
 
 *
   margin: 0
@@ -9,20 +8,20 @@
 
 html
   height: 100%
+  scroll-behavior: smooth
 
   body
-    background: $color--primary
-    color: $color--secondary
-    font-family: $font-family--default
-    font-size: $font-size--default
-    letter-spacing: $letter-spacing--default
-    line-height: $line-height--default
+    background-color: $color--primary
     min-height: 100%
 
 .mat-snack-bar-container
   background: $color--black
   border-radius: 0 !important
   color: $color--white
+
+  .mat-simple-snackbar
+    font-family: $font-family--default
+    font-weight: 300
 
   .mat-simple-snackbar-action
     color: $color--error

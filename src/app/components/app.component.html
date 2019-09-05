@@ -1,88 +1,230 @@
 <header>
-  <h1 class="color-secondary">ngx-intersection</h1>
-  <pre>ROOT_MAGIN_FUTURE: {{ rootMarginFuture }}</pre>
+  <div class="container">
+    <h1
+      class="color-secondary"
+      [ngStyle]="{'padding-top': rootMarginPast.slice(1)}"
+    >ngx-intersection</h1>
+
+    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+      dolore
+      magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+      gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+      sadipscing
+      elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+      eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+      ipsum
+      dolor sit amet.</p>
+
+    <img src="/assets/arrow-down.svg">
+  </div>
+
+
+  <!-- <pre>ROOT_MAGIN_FUTURE: {{ rootMarginFuture }}</pre>
   <pre>ROOT_MAGIN_PAST: {{ rootMarginPast }}</pre>
-  <pre>ROOT_MAGIN_PRESENT: {{ rootMarginPresent }}</pre>
+  <pre>ROOT_MAGIN_PRESENT: {{ rootMarginPresent }}</pre> -->
 </header>
 
-<div>
+<div class="container">
   <ul class="dummies">
-    <li (ngxIntersectionFutureEnd)="emitHandler('ngxIntersectionFutureEnd', $event)">
+    <li
+      class="observed"
+      (ngxIntersectionFutureEnd)="emitHandler('ngxIntersectionFutureEnd', $event)"
+    >
       <h2>ngxIntersectionFutureEnd</h2>
     </li>
-    <li (ngxIntersectionFutureEndExit)="emitHandler('ngxIntersectionFutureEndExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionFutureEndExit)="emitHandler('ngxIntersectionFutureEndExit', $event)"
+    >
       <h2>ngxIntersectionFutureEndExit</h2>
     </li>
-    <li (ngxIntersectionFutureEndOnce)="emitHandler('ngxIntersectionFutureEndOnce', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionFutureEndOnce)="emitHandler('ngxIntersectionFutureEndOnce', $event)"
+    >
       <h2>ngxIntersectionFutureEndOnce</h2>
     </li>
-    <li (ngxIntersectionFutureEndOnceExit)="emitHandler('ngxIntersectionFutureEndOnceExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionFutureEndOnceExit)="emitHandler('ngxIntersectionFutureEndOnceExit', $event)"
+    >
       <h2>ngxIntersectionFutureEndOnceExit</h2>
     </li>
-    <li (ngxIntersectionFutureStart)="emitHandler('ngxIntersectionFutureStart', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionFutureStart)="emitHandler('ngxIntersectionFutureStart', $event)"
+    >
       <h2>ngxIntersectionFutureStart</h2>
     </li>
-    <li (ngxIntersectionFutureStartExit)="emitHandler('ngxIntersectionFutureStartExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionFutureStartExit)="emitHandler('ngxIntersectionFutureStartExit', $event)"
+    >
       <h2>ngxIntersectionFutureStartExit</h2>
     </li>
-    <li (ngxIntersectionFutureStartOnce)="emitHandler('ngxIntersectionFutureStartOnce', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionFutureStartOnce)="emitHandler('ngxIntersectionFutureStartOnce', $event)"
+    >
       <h2>ngxIntersectionFutureStartOnce</h2>
     </li>
-    <li (ngxIntersectionFutureStartOnceExit)="emitHandler('ngxIntersectionFutureStartOnceExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionFutureStartOnceExit)="emitHandler('ngxIntersectionFutureStartOnceExit', $event)"
+    >
       <h2>ngxIntersectionFutureStartOnceExit</h2>
     </li>
-    <li (ngxIntersectionPastEnd)="emitHandler('ngxIntersectionPastEnd', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPastEnd)="emitHandler('ngxIntersectionPastEnd', $event)"
+    >
       <h2>ngxIntersectionPastEnd</h2>
     </li>
-    <li (ngxIntersectionPastEndExit)="emitHandler('ngxIntersectionPastEndExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPastEndExit)="emitHandler('ngxIntersectionPastEndExit', $event)"
+    >
       <h2>ngxIntersectionPastEndExit</h2>
     </li>
-    <li (ngxIntersectionPastEndOnce)="emitHandler('ngxIntersectionPastEndOnce', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPastEndOnce)="emitHandler('ngxIntersectionPastEndOnce', $event)"
+    >
       <h2>ngxIntersectionPastEndOnce</h2>
     </li>
-    <li (ngxIntersectionPastEndOnceExit)="emitHandler('ngxIntersectionPastEndOnceExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPastEndOnceExit)="emitHandler('ngxIntersectionPastEndOnceExit', $event)"
+    >
       <h2>ngxIntersectionPastEndOnceExit</h2>
     </li>
-    <li (ngxIntersectionPastStart)="emitHandler('ngxIntersectionPastStart', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPastStart)="emitHandler('ngxIntersectionPastStart', $event)"
+    >
       <h2>ngxIntersectionPastStart</h2>
     </li>
-    <li (ngxIntersectionPastStartExit)="emitHandler('ngxIntersectionPastStartExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPastStartExit)="emitHandler('ngxIntersectionPastStartExit', $event)"
+    >
       <h2>ngxIntersectionPastStartExit</h2>
     </li>
-    <li (ngxIntersectionPastStartOnce)="emitHandler('ngxIntersectionPastStartOnce', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPastStartOnce)="emitHandler('ngxIntersectionPastStartOnce', $event)"
+    >
       <h2>ngxIntersectionPastStartOnce</h2>
     </li>
-    <li (ngxIntersectionPastStartOnceExit)="emitHandler('ngxIntersectionPastStartOnceExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPastStartOnceExit)="emitHandler('ngxIntersectionPastStartOnceExit', $event)"
+    >
       <h2>ngxIntersectionPastStartOnceExit</h2>
     </li>
-    <li (ngxIntersectionPresentEnd)="emitHandler('ngxIntersectionPresentEnd', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPresentEnd)="emitHandler('ngxIntersectionPresentEnd', $event)"
+    >
       <h2>ngxIntersectionPresentEnd</h2>
     </li>
-    <li (ngxIntersectionPresentEndExit)="emitHandler('ngxIntersectionPresentEndExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPresentEndExit)="emitHandler('ngxIntersectionPresentEndExit', $event)"
+    >
       <h2>ngxIntersectionPresentEndExit</h2>
     </li>
-    <li (ngxIntersectionPresentEndOnce)="emitHandler('ngxIntersectionPresentEndOnce', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPresentEndOnce)="emitHandler('ngxIntersectionPresentEndOnce', $event)"
+    >
       <h2>ngxIntersectionPresentEndOnce</h2>
     </li>
-    <li (ngxIntersectionPresentEndOnceExit)="emitHandler('ngxIntersectionPresentEndOnceExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPresentEndOnceExit)="emitHandler('ngxIntersectionPresentEndOnceExit', $event)"
+    >
       <h2>ngxIntersectionPresentEndOnceExit</h2>
     </li>
-    <li (ngxIntersectionPresentStart)="emitHandler('ngxIntersectionPresentStart', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPresentStart)="emitHandler('ngxIntersectionPresentStart', $event)"
+    >
       <h2>ngxIntersectionPresentStart</h2>
     </li>
-    <li (ngxIntersectionPresentStartExit)="emitHandler('ngxIntersectionPresentStartExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPresentStartExit)="emitHandler('ngxIntersectionPresentStartExit', $event)"
+    >
       <h2>ngxIntersectionPresentStartExit</h2>
     </li>
-    <li (ngxIntersectionPresentStartOnce)="emitHandler('ngxIntersectionPresentStartOnce', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPresentStartOnce)="emitHandler('ngxIntersectionPresentStartOnce', $event)"
+    >
       <h2>ngxIntersectionPresentStartOnce</h2>
     </li>
-    <li (ngxIntersectionPresentStartOnceExit)="emitHandler('ngxIntersectionPresentStartOnceExit', $event)">
+    <li><img src="/assets/arrow-down.svg">
+    <li>
+    <li
+      class="observed"
+      (ngxIntersectionPresentStartOnceExit)="emitHandler('ngxIntersectionPresentStartOnceExit', $event)"
+    >
       <h2>ngxIntersectionPresentStartOnceExit</h2>
     </li>
+    <li><a (click)="scrollToTop()"><img src="/assets/arrow-up.svg"></a>
+    <li>
   </ul>
 </div>
 
-<div class="overlay">
+<div
+  class="overlay"
+  style="display:none;"
+>
   <div
     class="future"
     [ngStyle]="{'height': 'calc(100vh - ' + rootMarginFuture + ' * 2 - 2px)', 'width': 'calc(100vw - ' + rootMarginFuture + ' * 2 - 2px)', 'top': rootMarginFuture, 'left': rootMarginFuture}"
@@ -96,5 +238,3 @@
     [ngStyle]="{'height': 'calc(100vh - ' + rootMarginPresent.slice(1) + ' * 2 - 2px)', 'width': 'calc(100vw - ' + rootMarginPresent.slice(1) + ' * 2 - 2px)', 'top': rootMarginPresent.slice(1), 'left': rootMarginPresent.slice(1)}"
   ></div>
 </div>
-
-<app-scroll-motivation></app-scroll-motivation>

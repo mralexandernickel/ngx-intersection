@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
+  <title>Intersection Observer Test</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+    }
+
+    .observe {
+      margin: 150vh auto;
+      width: 960px;
+      background: orange;
+      height: 100vh;
+      text-align: center;
+      line-height: 100vh;
+    }
+
+    .overlay {
+      position: fixed;
+      height: calc(100vh - 200px);
+      width: calc(100vw - 200px);
+      border: 100px solid rgba(0, 0, 0, .4);
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="observe">
+      element to observer
+    </div>
+  </main>
+  <div class="overlay"></div>
+  <script>
+    const element = document.querySelector('.observe');
+    const observerCallback = (entries) => {
+      for (var i = 0; i < entries.length; i++) {
+        const entry = entries[i];
+        if (entry.isIntersecting) {
+          alert('now');
+        }
+      }
+    };
+    const observerOptions = {
+      rootMargin: '-100px',
+      threshold: 1.0
+    }
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    observer.observe(element);
+
+  </script>
+</body>
+
+</html>

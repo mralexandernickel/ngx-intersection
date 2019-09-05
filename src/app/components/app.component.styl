@@ -1,27 +1,44 @@
-@require '../../_variables'
+@require variables
+
+a
+  cursor: pointer
 
 header
+  background-color: $color--primary
+  height: 100vh
   text-align: center
 
   h1
     font-size: 128px
 
+  img
+    margin-top: 100px
+
 .dummies
+  // background-image: url('/assets/chevron-down.svg')
+  // background-position: top center
+  // background-repeat: repeat-y
   list-style: none
-  margin: 0 auto
-  width: 960px
 
   li
-    background: $color--functional-1
-    height: 80vh
-    margin-top: 200vh
+    margin-bottom: 50vh
+    text-align: center
+
+  li.observed
+    border: 2px dashed $color--secondary
+    color: $color--secondary
+    height: 200px // height of the element needs to be smaller than viewport subtracted by the rootMargin
     overflow: hidden
     position: relative
+
+    &.emitted
+      background: $color--secondary
+      border: none
+      color: $color--primary
 
     h2
       font-size: 24px
       margin-top: 24px
-      text-align: center
 
     .index
       bottom: 0
@@ -39,18 +56,18 @@ header
   right: 0
   top: 0
   width: 100vw
-  z-index: 9999
+  z-index: 99
 
   &.hidden
     opacity: 0
 
   div
-    border: 1px solid $color--black
+    border-style: solid
+    border-width: 1px
     display: block
     position: absolute
 
     &::before
-      background: $color--black
       color: $color--white
       display: block
       padding: 0 10px
@@ -58,11 +75,23 @@ header
       right: 0
       top: 0
 
-    &.future::before
-      content: 'future'
+    &.future
+      border-color: $color--functional-1
 
-    &.past::before
-      content: 'past'
+      &::before
+        background: $color--functional-1
+        content: 'future'
 
-    &.present::before
-      content: 'present'
+    &.past
+      border-color: $color--functional-2
+
+      &::before
+        background: $color--functional-2
+        content: 'past'
+
+    &.present
+      border-color: $color--functional-3
+
+      &::before
+        background: $color--functional-3
+        content: 'present'

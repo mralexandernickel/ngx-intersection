@@ -10,6 +10,6 @@ export class IntersectionPastEndService extends IntersectionObserverService {
     @Inject(ROOT_MARGIN_PAST) public rootMargin: string,
     @Inject(THRESHOLD_END) public threshold: number
   ) {
-    super(rootMargin, threshold);
+    super(rootMargin, 1.0);
   }
 }
