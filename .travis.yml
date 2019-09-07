@@ -25,6 +25,7 @@ deploy:
     api_key:
       secure: Y0vwIBulx+b/oQRYdxaHBw4jxhujF+rPnWB9sVQ10uHR173CMdKbFnK+a98G9byXyqNMs0cXnGdxUiWuQlE71HFeLzjwtDdrNKkVmqfOCUG1MTjp5VYQZDLVkj/tMDmCI+gKcah0BKxPDn+fhsQw0KUMDbYLLQUv3MPXFRUvahU3Lm/nXrQqBBWaRJ3PrDi8Jdv4qVHhqIjANkUmc0S/xt2vLAlVaC3lgd0lVbOZw7HrEcfrLbnEmH2iEtF66tY1NQtY3/Hq93RWsOU0cH3numj2Z0I/kVb+WzAwTZLFXmfBmGH26WjXeeozBDJemN+M9mMGIF6N2sxf9RnQUoFF0PvOaWMSyNgDtPZy6Gj4oz0vloYNw32uaBiLe2kKlKUlOcvLUaJUit0ETR14UwQ25RbdEPFX8dOtd1t1suEX+uHedjPe10Ca2j98JVpGd7Fv/Yt+M1nil9ZwJWKAGMyWxeSzNiOClWZxoEEdI0MOZWuShZDwL7kHw0+aS1Yj5G+KPD46XfQkK+R8aSgJDSEuhSUHRASL9ObB1s1lzY51zQbkibfgAUvIE33DX7W9ruikhYg58l6HVdLTfRNITq8ZIXA3PhqDWPjB+iMVtk9c6O5S1X3jFKBDCiApq0J/5sK7rOvJkwWHPRjUKR9UUlVxRmiT3/+isw4lvWksiINHWTQ=
     on:
+      tags: true
       repo: mralexandernickel/angular-intersection
   - provider: pages
     skip-cleanup: true
