@@ -1,10 +1,8 @@
-[![Build Status](https://travis-ci.org/mralexandernickel/angular-intersection.svg?branch=master)](https://travis-ci.org/mralexandernickel/angular-intersection)
-[![Coverage Status](https://coveralls.io/repos/github/mralexandernickel/angular-intersection/badge.svg?branch=master)](https://coveralls.io/github/mralexandernickel/angular-intersection?branch=master)
-[![npm version](https://badge.fury.io/js/%40mralexandernickel%2Fangular-intersection.svg)](https://www.npmjs.com/@mralexandernickel/angular-intersection)
+[![Build Status](https://travis-ci.org/mralexandernickel/ngx-intersection.svg?branch=master)](https://travis-ci.org/mralexandernickel/ngx-intersection)
+[![Coverage Status](https://coveralls.io/repos/github/mralexandernickel/ngx-intersection/badge.svg?branch=master)](https://coveralls.io/github/mralexandernickel/ngx-intersection?branch=master)
+[![npm version](https://badge.fury.io/js/%40mralexandernickel%2Fngx-intersection.svg)](https://www.npmjs.com/@mralexandernickel/ngx-intersection)
 
-# Angular Intersection
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
+# ngx-intersection
 
 ## Events
 
@@ -43,7 +41,7 @@ inside your NgModule:
 import {
   ROOT_MARGIN_FUTURE,
   THRESHOLD_END
-} from '@mralexandernickel/angular-intersection';
+} from '@mralexandernickel/ngx-intersection';
 
 @NgModule({
   // ...

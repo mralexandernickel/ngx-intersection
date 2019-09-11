@@ -5,7 +5,7 @@ import {
   ROOT_MARGIN_FUTURE,
   ROOT_MARGIN_PAST,
   ROOT_MARGIN_PRESENT
-} from '@mralexandernickel/angular-intersection';
+} from '@mralexandernickel/ngx-intersection';
 
 @Component({
   selector: 'app-root',
