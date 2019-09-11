@@ -13,6 +13,34 @@
 - end ("0px", 1.0)
 - after end ("-100px", 1.0)
 
+## Needed polyfills
+
+Because the IntersectionObserver is not supported in MS Edge < 15, you need to
+add a polyfill for it. We cannot import it here directly, because
+
+1. We do not know if **you** want to support these browsers
+2. If we do so, we'd break support for serverside rendering
+
+This is why we decided to let the polyfill-responsibility up to you. An easy
+way to do this would be installing the npm-package `intersection-observer` by
+executing:
+
+```bash
+npm install intersection-observer
+```
+
+or if you use yarn
+
+```bash
+yarn add intersection-observer
+```
+
+and finally just import the whole package into your `polyfills.ts`:
+
+```typescript
+import 'intersection-observer';
+```
+
 ## InjectionTokens
 
 To be able to configure the behavior of the underlying IntersectionObservers,
