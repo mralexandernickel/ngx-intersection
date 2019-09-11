@@ -1,11 +1,7 @@
 //
 // MODULES
 // =============================================================================
-export * from './lib/angular-intersection.module';
-//
-// LEGACY DIRECTIVES
-// =============================================================================
-export * from './lib/legacy-directives/public-api';
+export * from './lib/modules/public-api';
 //
 // SERVICES
 // =============================================================================

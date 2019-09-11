@@ -8,7 +8,7 @@ import {
   IntersectionFutureEndOnceExitDirective,
   IntersectionFutureStartExitDirective,
   IntersectionFutureStartOnceExitDirective
-} from './future/public-api';
+} from '../directives/future/public-api';
 import {
   IntersectionPastEndDirective,
   IntersectionPastEndOnceDirective,
@@ -18,7 +18,7 @@ import {
   IntersectionPastEndOnceExitDirective,
   IntersectionPastStartExitDirective,
   IntersectionPastStartOnceExitDirective
-} from './past/public-api';
+} from '../directives/past/public-api';
 import {
   IntersectionPresentEndDirective,
   IntersectionPresentEndOnceDirective,
@@ -28,7 +28,7 @@ import {
   IntersectionPresentEndOnceExitDirective,
   IntersectionPresentStartExitDirective,
   IntersectionPresentStartOnceExitDirective
-} from './present/public-api';
+} from '../directives/present/public-api';
 
 export const intersectionDirectives = [
   // future

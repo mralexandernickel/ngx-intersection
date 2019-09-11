@@ -1,5 +1,5 @@
 import { Directive, Output, EventEmitter } from '@angular/core';
-import { IntersectionPresentStartDirective } from '../directives/public-api';
+import { IntersectionPresentStartDirective } from '../public-api';
 
 @Directive({
   selector: '[libEnterViewport]',
