@@ -58,7 +58,7 @@ export interface IScrollInformation {
 export class ScrollInformationService {
   /** */
   constructor(
-    @Inject(PLATFORM_ID) public platformId: Object,
+    @Inject(PLATFORM_ID) public platformId: object,
     @Inject(DOCUMENT) public document: any
   ) {
     this.isBrowser = isPlatformBrowser(platformId);

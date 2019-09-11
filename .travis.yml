@@ -6,10 +6,10 @@ node_js:
 cache:
   yarn: true
   directories:
-    - './node_modules'
+    - "./node_modules"
 before_script:
-  - yarn build angular-intersection
-  - yarn build --prod --base-href=/angular-intersection/
+  - yarn build ngx-intersection
+  - yarn build --prod --base-href=/ngx-intersection/
 script:
   - yarn lint
   - yarn test
@@ -17,7 +17,7 @@ after_success:
   - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
   - curl -X PURGE https://camo.githubusercontent.com/d3134cc10a8946ed6a45830a67af27da9391935a/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f6769746875622f6d72616c6578616e6465726e69636b656c2f6e67782d706963747572652f62616467652e7376673f6272616e63683d6d6173746572
 before_deploy:
-  - cd $TRAVIS_BUILD_DIR/dist/angular-intersection
+  - cd $TRAVIS_BUILD_DIR/dist/ngx-intersection
 deploy:
   - provider: npm
     email: mr.alexander.nickel@gmail.com
@@ -25,12 +25,12 @@ deploy:
     api_key:
       secure: Y0vwIBulx+b/oQRYdxaHBw4jxhujF+rPnWB9sVQ10uHR173CMdKbFnK+a98G9byXyqNMs0cXnGdxUiWuQlE71HFeLzjwtDdrNKkVmqfOCUG1MTjp5VYQZDLVkj/tMDmCI+gKcah0BKxPDn+fhsQw0KUMDbYLLQUv3MPXFRUvahU3Lm/nXrQqBBWaRJ3PrDi8Jdv4qVHhqIjANkUmc0S/xt2vLAlVaC3lgd0lVbOZw7HrEcfrLbnEmH2iEtF66tY1NQtY3/Hq93RWsOU0cH3numj2Z0I/kVb+WzAwTZLFXmfBmGH26WjXeeozBDJemN+M9mMGIF6N2sxf9RnQUoFF0PvOaWMSyNgDtPZy6Gj4oz0vloYNw32uaBiLe2kKlKUlOcvLUaJUit0ETR14UwQ25RbdEPFX8dOtd1t1suEX+uHedjPe10Ca2j98JVpGd7Fv/Yt+M1nil9ZwJWKAGMyWxeSzNiOClWZxoEEdI0MOZWuShZDwL7kHw0+aS1Yj5G+KPD46XfQkK+R8aSgJDSEuhSUHRASL9ObB1s1lzY51zQbkibfgAUvIE33DX7W9ruikhYg58l6HVdLTfRNITq8ZIXA3PhqDWPjB+iMVtk9c6O5S1X3jFKBDCiApq0J/5sK7rOvJkwWHPRjUKR9UUlVxRmiT3/+isw4lvWksiINHWTQ=
     on:
+      repo: mralexandernickel/ngx-intersection
       tags: true
-      repo: mralexandernickel/angular-intersection
   - provider: pages
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
     keep-history: true
-    local-dir: dist/angular-intersection-demo
+    local-dir: dist/ngx-intersection-demo
     on:
       branch: master
