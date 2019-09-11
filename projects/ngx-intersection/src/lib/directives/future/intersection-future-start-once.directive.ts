@@ -31,7 +31,7 @@ export class IntersectionFutureStartOnceDirective extends AbstractViewportDirect
   constructor(
     public elRef: ElementRef,
     public intersectionFutureStartService: IntersectionFutureStartService,
-    @Inject(PLATFORM_ID) public platformId: object
+    @Inject(PLATFORM_ID) public platformId: string
   ) {
     super(elRef, intersectionFutureStartService, platformId);
   }

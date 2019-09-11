@@ -30,7 +30,7 @@ export class IntersectionPresentEndDirective extends AbstractViewportDirective {
   constructor(
     public elRef: ElementRef,
     public intersectionPresentEndService: IntersectionPresentEndService,
-    @Inject(PLATFORM_ID) public platformId: object
+    @Inject(PLATFORM_ID) public platformId: string
   ) {
     super(elRef, intersectionPresentEndService, platformId);
   }

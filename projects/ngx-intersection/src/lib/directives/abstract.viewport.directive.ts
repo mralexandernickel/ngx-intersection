@@ -50,7 +50,7 @@ export abstract class AbstractViewportDirective implements OnInit, OnDestroy {
   constructor(
     public elRef: ElementRef,
     public intersectionService: IntersectionService,
-    @Inject(PLATFORM_ID) public platformId: object
+    @Inject(PLATFORM_ID) public platformId: string
   ) {}
 
   /** */

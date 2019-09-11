@@ -7,10 +7,8 @@ import {
   PLATFORM_ID
 } from '@angular/core';
 import { AbstractViewportDirective } from '../abstract.viewport.directive';
-import {
-  IntersectionFutureEndService,
-  Callbacks
-} from '../../services/public-api';
+import { IntersectionFutureEndService } from '../../services/intersection-future-end.service';
+import { Callbacks } from '../../services/intersection-observer.service';
 
 const identifier = 'ngxIntersectionFutureEndOnce';
 
@@ -31,7 +29,7 @@ export class IntersectionFutureEndOnceDirective extends AbstractViewportDirectiv
   constructor(
     public elRef: ElementRef,
     public intersectionFutureEndService: IntersectionFutureEndService,
-    @Inject(PLATFORM_ID) public platformId: object
+    @Inject(PLATFORM_ID) public platformId: string
   ) {
     super(elRef, intersectionFutureEndService, platformId);
   }

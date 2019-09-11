@@ -31,7 +31,7 @@ export class IntersectionPastStartOnceDirective extends AbstractViewportDirectiv
   constructor(
     public elRef: ElementRef,
     public intersectionPastStartService: IntersectionPastStartService,
-    @Inject(PLATFORM_ID) public platformId: object
+    @Inject(PLATFORM_ID) public platformId: string
   ) {
     super(elRef, intersectionPastStartService, platformId);
   }
