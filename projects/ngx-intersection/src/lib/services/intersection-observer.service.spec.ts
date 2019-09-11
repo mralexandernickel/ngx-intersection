@@ -21,7 +21,7 @@ const mockIntersectionObserverEntry = (
     boundingClientRect: mockClientRect(),
     intersectionRatio: 1,
     intersectionRect: mockClientRect(),
-    isIntersecting: isIntersecting,
+    isIntersecting,
     rootBounds: mockClientRect(),
     target: element,
     time: Date.now()
