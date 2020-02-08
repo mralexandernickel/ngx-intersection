@@ -1,8 +1,6 @@
 language: node_js
 sudo: required
 dist: trusty
-node_js:
-  - 10.9.0
 cache:
   yarn: true
   directories:
