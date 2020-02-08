@@ -1,12 +1,7 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  OnDestroy
-} from '@angular/core';
-import { ScrollInformationService } from '../../services/scroll-information.service';
-import { pluck, map, distinctUntilChanged, tap } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { distinctUntilChanged, map, pluck } from 'rxjs/operators';
+import { ScrollInformationService } from '../../services/scroll-information.service';
 
 export const SCROLLED_OFFSET = 50;
 

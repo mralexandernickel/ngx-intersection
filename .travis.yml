@@ -6,9 +6,9 @@ node_js:
 cache:
   yarn: true
   directories:
-    - "./node_modules"
+    - './node_modules'
 before_script:
-  - yarn build ngx-intersection
+  - yarn build ngx-intersection --prod
   - yarn build --prod --base-href=/ngx-intersection/
 script:
   - yarn lint

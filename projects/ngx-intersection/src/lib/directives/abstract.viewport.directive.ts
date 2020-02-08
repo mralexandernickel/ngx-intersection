@@ -1,12 +1,4 @@
-import {
-  ElementRef,
-  EventEmitter,
-  Inject,
-  PLATFORM_ID,
-  OnInit,
-  OnDestroy,
-  Input
-} from '@angular/core';
+import { ElementRef, EventEmitter, Inject, PLATFORM_ID, OnInit, OnDestroy, Input, Directive } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { IntersectionService } from '../services/abstract.intersection.service';
 import { Callbacks } from '../services/intersection-observer.service';
@@ -19,6 +11,7 @@ import { Callbacks } from '../services/intersection-observer.service';
 // tslint:disable-next-line
 export interface NgxIntersectionConfig {}
 
+@Directive()
 export abstract class AbstractViewportDirective implements OnInit, OnDestroy {
   /** */
   public abstract intersectionEmitter: EventEmitter<any>;

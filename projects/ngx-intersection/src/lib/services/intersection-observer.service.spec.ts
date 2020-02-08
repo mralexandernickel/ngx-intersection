@@ -27,7 +27,7 @@ const mockIntersectionObserverEntry = (
     time: Date.now()
   };
 
-  return mock;
+  return mock as any;
 };
 
 const mockIntersectionObserverEntries = (

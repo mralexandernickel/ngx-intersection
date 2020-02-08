@@ -1,5 +1,5 @@
-import { Directive, Output, EventEmitter } from '@angular/core';
-import { Callbacks } from '../../services/public-api';
+import { Directive, EventEmitter, Output } from '@angular/core';
+import { Callbacks } from '../../services/intersection-observer.service';
 import { IntersectionFutureEndDirective } from './intersection-future-end.directive';
 
 const identifier = 'ngxIntersectionFutureEndExit';
