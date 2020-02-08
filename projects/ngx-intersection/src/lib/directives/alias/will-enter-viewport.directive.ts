@@ -1,5 +1,5 @@
-import { Directive, Output, EventEmitter } from '@angular/core';
-import { IntersectionFutureStartDirective } from '../public-api';
+import { Directive, EventEmitter, Output } from '@angular/core';
+import { IntersectionFutureStartDirective } from '../future/public-api';
 
 @Directive({
   selector: '[libWillEnterViewport]',
