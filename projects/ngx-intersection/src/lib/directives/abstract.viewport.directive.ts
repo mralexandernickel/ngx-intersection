@@ -87,11 +87,13 @@ export abstract class AbstractViewportDirective {
   }
 
   /** */
+  // tslint:disable-next-line
   public ngOnInit(): void {
     this.observeStart();
   }
 
   /** */
+  // tslint:disable-next-line
   public ngOnDestroy(): void {
     this.observeEnd();
   }
