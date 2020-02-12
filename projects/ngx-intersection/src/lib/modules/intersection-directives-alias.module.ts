@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import {
   EnterViewportDirective,
   EnterViewportOnceDirective,
-  WillEnterViewportDirective,
   ExitViewportDirective,
-  HasEnteredViewportDirective
+  HasEnteredViewportDirective,
+  WillEnterViewportDirective
 } from '../directives/alias/public-api';
 
 export const directivesAlias = [
