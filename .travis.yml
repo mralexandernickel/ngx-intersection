@@ -11,6 +11,7 @@ before_install:
 script:
   - yarn lint
   - yarn test
+  - yarn build ngx-intersection
   - yarn build --prod --base-href=/ngx-intersection/
   - yarn build ngx-intersection --prod
 after_success:
