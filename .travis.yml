@@ -11,8 +11,8 @@ before_install:
 script:
   - yarn lint
   - yarn test
-  - yarn build ngx-intersection --prod
   - yarn build --prod --base-href=/ngx-intersection/
+  - yarn build ngx-intersection --prod
 after_success:
   - cat ./coverage/ngx-intersection/lcov.info | ./node_modules/.bin/coveralls
   - curl -X PURGE https://camo.githubusercontent.com/d3134cc10a8946ed6a45830a67af27da9391935a/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f6769746875622f6d72616c6578616e6465726e69636b656c2f6e67782d706963747572652f62616467652e7376673f6272616e63683d6d6173746572
