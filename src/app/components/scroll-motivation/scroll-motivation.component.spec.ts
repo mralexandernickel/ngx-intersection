@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ScrollMotivationComponent } from './scroll-motivation.component';
 
@@ -6,7 +6,7 @@ describe('ScrollMotivationComponent', () => {
   let component: ScrollMotivationComponent;
   let fixture: ComponentFixture<ScrollMotivationComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ScrollMotivationComponent ]
     })
