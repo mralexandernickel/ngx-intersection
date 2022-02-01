@@ -1,13 +1,16 @@
 import { IntersectionObserverService } from './intersection-observer.service';
 
-const mockClientRect = (): ClientRect => {
+const mockClientRect = (): DOMRect => {
   const clientRect = {
     bottom: 1,
     height: 1,
     left: 1,
     right: 1,
     top: 1,
-    width: 1
+    width: 1,
+    x: 1,
+    y: 1,
+    toJSON: () => JSON.stringify(this)
   };
 
   return clientRect;
