@@ -1,0 +1,10 @@
+name: lint
+on: push
+
+jobs:
+  lint:
+    name: lint typescript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn lint
