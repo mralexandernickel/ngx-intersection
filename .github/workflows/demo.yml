@@ -3,7 +3,6 @@ name: demo
 on:
   workflow_run:
     workflows:
-      - lint
       - test
     types:
       - completed
@@ -20,6 +19,6 @@ jobs:
       - run: |
           git config --global user.name 'Alexander Nickel'
           git config --global user.email 'mr.alexander.nickel@gmail.com'
-          git add -fgit  dist/ngx-intersection-demo
+          git add -f dist/ngx-intersection-demo
           git commit -m 'update gh-pages'
           git subtree push --prefix dist/ngx-intersection-demo origin gh-pages

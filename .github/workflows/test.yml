@@ -1,5 +1,11 @@
 name: test
-on: push
+
+on:
+  workflow_run:
+    workflows:
+      - lint
+    types:
+      - completed
 
 jobs:
   test:
