@@ -19,6 +19,7 @@ jobs:
       - run: |
           git config --global user.name 'Alexander Nickel'
           git config --global user.email 'mr.alexander.nickel@gmail.com'
+          git push origin --delete gh-pages
           git add -f dist/ngx-intersection-demo
           git commit -m 'update gh-pages'
           git subtree push --prefix dist/ngx-intersection-demo origin gh-pages

@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: yarn install12
+      - run: yarn install
       - run: yarn test
       - run: ls coverage/ngx-intersection
       - uses: actions/upload-artifact@v2
